@@ -34,9 +34,9 @@ function App() {
 
 	return (
 		<>
-			<button onClick={() => setBodyQuery({ ...bodyQuery, body: "" })}>
+			{/* <button onClick={() => setBodyQuery({ ...bodyQuery, body: "" })}>
 				Default
-			</button>
+			</button> */}
 			<BodiesComponent
 				onSelectBody={(body) => setBodyQuery({ ...bodyQuery, body })}
 			/>
