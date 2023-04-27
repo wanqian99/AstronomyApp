@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import BodiesPosition from "./components/bodiesPosition";
+import BodiesPosition from "./components/BodiesPosition";
 import BodiesComponent from "./components/BodiesComponent";
 import BodiesForm from "./components/BodiesForm";
 
