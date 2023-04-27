@@ -52,10 +52,13 @@ const BodiesForm = ({ submitForm }: Props) => {
 			alert("Date range should be at most 31 days apart.");
 			return false;
 		}
+
+		return true;
 	};
 
 	return (
 		<>
+			<h3>Form: </h3>
 			<form
 				onSubmit={handleSubmit((data) => {
 					// check date range

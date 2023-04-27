@@ -3,6 +3,7 @@ import BodiesPosition from "./components/BodiesPosition";
 import BodiesComponent from "./components/BodiesComponent";
 import BodiesForm from "./components/BodiesForm";
 import moment from "moment";
+import BodiesQuery from "./components/BodiesQuery";
 
 export interface BodyQuery {
 	body: string;
@@ -33,6 +34,13 @@ function App() {
 
 	return (
 		<>
+			<button onClick={() => setBodyQuery({ ...bodyQuery, body: "" })}>
+				Default
+			</button>
+			<BodiesComponent
+				onSelectBody={(body) => setBodyQuery({ ...bodyQuery, body })}
+			/>
+			<hr />
 			<BodiesForm
 				submitForm={(newQuery) =>
 					setBodyQuery({
@@ -46,12 +54,9 @@ function App() {
 					})
 				}
 			/>
-			<button onClick={() => setBodyQuery({ ...bodyQuery, body: "" })}>
-				Default
-			</button>
-			<BodiesComponent
-				onSelectBody={(body) => setBodyQuery({ ...bodyQuery, body })}
-			/>
+			<hr />
+			<BodiesQuery bodyQuery={bodyQuery} />
+			<hr />
 			<BodiesPosition bodyQuery={bodyQuery} />
 		</>
 	);
