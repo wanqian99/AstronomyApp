@@ -80,7 +80,7 @@ const ColorModeContextProvider = ({ children }: Props) => {
 						// contrastText: "#fff",
 					},
 					secondary: {
-						main: purple[900],
+						main: blue[900],
 						// main: blue[50],
 						// light: "#ff7961",
 						// main: "#f44336",

@@ -54,7 +54,11 @@ const BodiesComponent = ({ onSelectBody }: Props) => {
 						<em>None</em>
 					</MenuItem>
 					{data?.bodies.map((body) => (
-						<MenuItem value={body} key={body}>
+						<MenuItem
+							value={body}
+							key={body}
+							style={{ textTransform: "capitalize" }}
+						>
 							{body}
 						</MenuItem>
 					))}
