@@ -44,6 +44,7 @@ const PlanetsSelector = ({ onSelectPlanet }: Props) => {
 					value={planet}
 					label="Planet"
 					onChange={handleChange}
+					size="small"
 					style={{ textTransform: "capitalize" }}
 				>
 					<MenuItem value="All">

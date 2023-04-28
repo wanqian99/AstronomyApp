@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import { useEffect, useState } from "react";
 import { ObserverParams } from "../App";
 import moment from "moment";
@@ -28,31 +28,44 @@ const Planets = () => {
 
 	return (
 		<>
-			<Box>
-				<PlanetsSelector
-					onSelectPlanet={(planet) =>
-						setObserverParams({ ...observerParams, planet })
-					}
-				/>
-
-				<PlanetsForm
-					submitForm={(newQuery) =>
-						setObserverParams({
-							...observerParams,
-							latitude: newQuery.latitude,
-							longitude: newQuery.longitude,
-							from_date: newQuery.from_date,
-							to_date: newQuery.to_date,
-							elevation: newQuery.elevation,
-							time: newQuery.time,
-						})
-					}
-				/>
-
-				<PlanetsQuery observerParams={observerParams} />
-
-				<PlanetsPosition observerParams={observerParams} />
-			</Box>
+			<Grid
+				container
+				spacing={2}
+				direction="row"
+				justifyContent="center"
+				alignItems="flex-start"
+				// direction="column"
+				// alignItems="center"
+				// justifyContent="center"
+				sx={{
+					margin: "5px auto",
+				}}
+			>
+				<Grid item xs={12} md={4}>
+					<PlanetsForm
+						submitForm={(newQuery) =>
+							setObserverParams({
+								...observerParams,
+								latitude: newQuery.latitude,
+								longitude: newQuery.longitude,
+								from_date: newQuery.from_date,
+								to_date: newQuery.to_date,
+								elevation: newQuery.elevation,
+								time: newQuery.time,
+							})
+						}
+					/>
+					<PlanetsQuery observerParams={observerParams} />
+				</Grid>
+				<Grid item xs={12} md={8}>
+					<PlanetsSelector
+						onSelectPlanet={(planet) =>
+							setObserverParams({ ...observerParams, planet })
+						}
+					/>
+					<PlanetsPosition observerParams={observerParams} />
+				</Grid>
+			</Grid>
 		</>
 	);
 };

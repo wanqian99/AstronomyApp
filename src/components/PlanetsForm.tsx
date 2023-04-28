@@ -1,6 +1,17 @@
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { DevTool } from "@hookform/devtools";
+import {
+	Box,
+	Button,
+	Card,
+	CardActions,
+	CardContent,
+	Stack,
+	TextField,
+	Typography,
+} from "@mui/material";
 
 const schema = z.object({
 	latitude: z
@@ -33,6 +44,7 @@ const PlanetsForm = ({ submitForm }: Props) => {
 		register,
 		handleSubmit,
 		reset,
+		control,
 		formState: { errors },
 	} = useForm<FormData>({
 		resolver: zodResolver(schema),
@@ -58,8 +70,137 @@ const PlanetsForm = ({ submitForm }: Props) => {
 
 	return (
 		<>
-			<h3>Form: </h3>
-			<form
+			<Card
+				raised={true}
+				sx={{
+					maxWidth: "90%",
+					margin: "auto",
+					// backgroundColor: "primary",
+					// border: "1px solid white",
+				}}
+			>
+				<CardContent>
+					<Typography
+						// sx={{ fontSize: 16 }}
+						color="text.primary"
+						variant="subtitle1"
+						gutterBottom
+					>
+						Planet query:
+					</Typography>
+					<form
+						onSubmit={handleSubmit((data) => {
+							// check date range
+							// if function returns true, submit and reset form
+							if (checkDateRange(data)) {
+								submitForm(data);
+								reset();
+							}
+						})}
+					>
+						<Stack spacing={2}>
+							<Stack direction={"row"} spacing={1}>
+								<TextField
+									fullWidth
+									label="Latitude"
+									type="number"
+									size="small"
+									variant="outlined"
+									{...register("latitude", {
+										valueAsNumber: true,
+									})}
+									error={!!errors.latitude}
+									helperText={errors.latitude?.message}
+								/>
+								<TextField
+									fullWidth
+									label="Longitude"
+									type="number"
+									size="small"
+									variant="outlined"
+									{...register("longitude", {
+										valueAsNumber: true,
+									})}
+									error={!!errors.longitude}
+									helperText={errors.longitude?.message}
+								/>
+							</Stack>
+							<Stack direction={"row"} spacing={1}>
+								<TextField
+									fullWidth
+									InputLabelProps={{ shrink: true }}
+									label="Start Date"
+									type="date"
+									size="small"
+									variant="outlined"
+									{...register("from_date")}
+									error={!!errors.from_date}
+									helperText={errors.from_date?.message}
+								/>
+								<TextField
+									fullWidth
+									InputLabelProps={{ shrink: true }}
+									label="End Date"
+									type="date"
+									size="small"
+									variant="outlined"
+									{...register("to_date")}
+									error={!!errors.to_date}
+									helperText={errors.to_date?.message}
+								/>
+							</Stack>
+							<Stack direction={"row"} spacing={1}>
+								<TextField
+									fullWidth
+									label="Elevation"
+									type="number"
+									size="small"
+									variant="outlined"
+									{...register("elevation", {
+										valueAsNumber: true,
+									})}
+									error={!!errors.elevation}
+									helperText={errors.elevation?.message}
+								/>
+								<TextField
+									fullWidth
+									InputLabelProps={{ shrink: true }}
+									label="Time"
+									type="time"
+									size="small"
+									variant="outlined"
+									{...register("time", {
+										setValueAs: (v) => {
+											if (v !== "") {
+												return v + ":00";
+											} else {
+												console.log(v);
+											}
+										},
+									})}
+									error={!!errors.time}
+									helperText={errors.time?.message}
+								/>
+							</Stack>
+						</Stack>
+
+						<Stack>
+							<Button
+								type="submit"
+								size="medium"
+								variant="contained"
+								color="primary"
+								sx={{ marginLeft: "auto", marginTop: "10px" }}
+							>
+								Submit
+							</Button>
+						</Stack>
+					</form>
+					<DevTool control={control} />
+				</CardContent>
+			</Card>
+
+			{/* <form
 				onSubmit={handleSubmit((data) => {
 					// check date range
 					// if function returns true, submit and reset form
@@ -68,8 +209,8 @@ const PlanetsForm = ({ submitForm }: Props) => {
 						reset();
 					}
 				})}
-			>
-				<div className="mb-3">
+			> */}
+			{/* <div className="mb-3">
 					<label htmlFor="latitude" className="form-label">
 						Latitude
 					</label>
@@ -82,8 +223,8 @@ const PlanetsForm = ({ submitForm }: Props) => {
 					{errors.latitude && (
 						<p className="text-danger">{errors.latitude.message}</p>
 					)}
-				</div>
-				<div className="mb-3">
+				</div> */}
+			{/* <div className="mb-3">
 					<label htmlFor="longitude" className="form-label">
 						Longitude
 					</label>
@@ -98,8 +239,8 @@ const PlanetsForm = ({ submitForm }: Props) => {
 							{errors.longitude.message}
 						</p>
 					)}
-				</div>
-				<div className="mb-3">
+				</div> */}
+			{/* <div className="mb-3">
 					<label htmlFor="date_range" className="form-label">
 						Date Range
 					</label>
@@ -124,8 +265,8 @@ const PlanetsForm = ({ submitForm }: Props) => {
 					{errors.to_date && (
 						<p className="text-danger">{errors.to_date.message}</p>
 					)}
-				</div>
-				<div className="mb-3">
+				</div> */}
+			{/* <div className="mb-3">
 					<label htmlFor="elevation" className="form-label">
 						Elevation
 					</label>
@@ -142,8 +283,8 @@ const PlanetsForm = ({ submitForm }: Props) => {
 							{errors.elevation.message}
 						</p>
 					)}
-				</div>
-				<div className="mb-3">
+				</div> */}
+			{/* <div className="mb-3">
 					<label htmlFor="time" className="form-label">
 						Time
 					</label>
@@ -158,11 +299,11 @@ const PlanetsForm = ({ submitForm }: Props) => {
 					{errors.time && (
 						<p className="text-danger">{errors.time.message}</p>
 					)}
-				</div>
-				<button type="submit" className="btn btn-primary">
+				</div> */}
+			{/* <button type="submit" className="btn btn-primary">
 					Submit
-				</button>
-			</form>
+				</button> */}
+			{/* </form> */}
 		</>
 	);
 };
