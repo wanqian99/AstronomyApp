@@ -31,7 +31,6 @@ import Button from "@mui/material/Button";
 import NightsStayRoundedIcon from "@mui/icons-material/NightsStayRounded";
 import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
 import { NavLink, Outlet } from "react-router-dom";
-import LightDarkToggleButton from "./LightDarkToggleButton";
 
 interface Props {
 	/**
@@ -66,28 +65,28 @@ const NavBar = (props: Props) => {
 			<Typography variant="h6" sx={{ my: 2 }}>
 				<NightsStayRoundedIcon
 					fontSize="large"
-					color="secondary"
+					color="primary"
 					sx={{ fontSize: "45px" }}
 				/>
 				<AutoAwesomeIcon
 					fontSize="small"
-					color="secondary"
+					color="primary"
 					sx={{ marginLeft: "-20px", marginBottom: "16px" }}
 				/>
 			</Typography>
 			<Divider />
 			<List>
-				<NavLink to={"/"} style={{ textDecoration: "none" }}>
+				<NavLink
+					to={"/"}
+					style={{ textDecoration: "none", color: "black" }}
+				>
 					<ListItem disablePadding>
 						<ListItemButton
 							sx={{ textAlign: "center" }}
 							selected={selectedIndex === 0}
 							onClick={(event) => handleListItemClick(event, 0)}
 						>
-							<ListItemText
-								primary={"Home"}
-								sx={{ color: "text.primary" }}
-							/>
+							<ListItemText primary={"Home"} />
 						</ListItemButton>
 					</ListItem>
 				</NavLink>
@@ -99,23 +98,17 @@ const NavBar = (props: Props) => {
 					>
 						<ListItem disablePadding>
 							<ListItemButton
-								sx={{
-									textAlign: "center",
-								}}
+								sx={{ textAlign: "center" }}
 								selected={selectedIndex === index + 1}
 								onClick={(event) =>
 									handleListItemClick(event, index + 1)
 								}
 							>
-								<ListItemText
-									primary={item}
-									sx={{ color: "text.primary" }}
-								/>
+								<ListItemText primary={item} />
 							</ListItemButton>
 						</ListItem>
 					</NavLink>
 				))}
-				<LightDarkToggleButton />
 			</List>
 		</Box>
 	);
@@ -126,7 +119,10 @@ const NavBar = (props: Props) => {
 	return (
 		<>
 			<CssBaseline />
-			<AppBar component="nav" sx={{ bgcolor: "primary.main" }}>
+			<AppBar
+				component="nav"
+				// sx={{ bgcolor: "background", color: "text.primary" }}
+			>
 				<Toolbar>
 					<IconButton
 						color="inherit"
@@ -173,23 +169,21 @@ const NavBar = (props: Props) => {
 							<NavLink
 								to={`${item}`}
 								key={item}
-								style={({ isActive }) => {
-									return {
-										display: "inline-block",
-										textDecoration: "none",
-										borderBottom: isActive
-											? "3px solid white"
-											: "",
-									};
-								}}
+								// style={({ isActive }) => {
+								// 	return {
+								// 		display: "inline-block",
+								// 		textDecoration: "none",
+								// 		borderBottom: isActive
+								// 			? "3px solid white"
+								// 			: "",
+								// 	};
+								// }}
 							>
-								<Button sx={{ color: "white" }}>{item}</Button>
+								<Button sx={{ color: "#fff" }}>{item}</Button>
 							</NavLink>
 						))}
 					</Box>
-					<Box sx={{ display: { xs: "none", sm: "block" } }}>
-						<LightDarkToggleButton />
-					</Box>
+					{/* <LightDarkToggleButton /> */}
 				</Toolbar>
 			</AppBar>
 			{/* for content to not be blocked by navbar */}

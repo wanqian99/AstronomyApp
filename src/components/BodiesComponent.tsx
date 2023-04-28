@@ -4,10 +4,6 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { useContext, useState } from "react";
-import { ColorModeContext } from "../theme";
-import { IconButton } from "@mui/material";
-import Brightness4Icon from "@mui/icons-material/Brightness4";
-import Brightness7Icon from "@mui/icons-material/Brightness7";
 
 interface Props {
 	onSelectBody: (body: string) => void;
@@ -15,15 +11,21 @@ interface Props {
 
 const BodiesComponent = ({ onSelectBody }: Props) => {
 	const { data, error, isLoading } = useBodies();
-	const [planet, setPlanet] = useState("");
-	const { mode, toggleColorMode } = useContext(ColorModeContext);
+	const [planet, setPlanet] = useState("All");
 
 	if (error) return <p>{error}</p>;
 	if (isLoading) return <p>Loading Bodies...</p>;
 
 	const handleChange = (event: SelectChangeEvent) => {
+		// set planet to show selected planet on dropdown
 		setPlanet(event.target.value);
-		onSelectBody(event.target.value);
+		// parse selected body to parent component to fetch data
+		// parse empty string if selected is All
+		if (event.target.value == "All") {
+			onSelectBody("");
+		} else {
+			onSelectBody(event.target.value);
+		}
 	};
 
 	return (
@@ -33,14 +35,7 @@ const BodiesComponent = ({ onSelectBody }: Props) => {
 					{body}
 				</button>
 			))} */}
-			{mode} mode
-			<IconButton
-				sx={{ ml: 1 }}
-				onClick={toggleColorMode}
-				color="inherit"
-			>
-				{mode === "dark" ? <Brightness7Icon /> : <Brightness4Icon />}
-			</IconButton>
+
 			<FormControl sx={{ m: 1, minWidth: 120 }} color="primary">
 				<InputLabel id="planetFilter">Planet</InputLabel>
 				<Select
@@ -49,9 +44,10 @@ const BodiesComponent = ({ onSelectBody }: Props) => {
 					value={planet}
 					label="Planet"
 					onChange={handleChange}
+					style={{ textTransform: "capitalize" }}
 				>
-					<MenuItem value="">
-						<em>None</em>
+					<MenuItem value="All">
+						<em>All</em>
 					</MenuItem>
 					{data?.bodies.map((body) => (
 						<MenuItem
