@@ -1,15 +1,14 @@
-import { BodyQuery } from "../App";
 import useData from "./useData";
 
-export interface Bodies {
+export interface Planets {
 	// data: {
 	bodies: string[];
 	// };
 }
 
-const useBodies = () =>
+const usePlanets = () =>
     // api path link, axios request config, dependencies
-    useData<Bodies>("/bodies", {
+    useData<Planets>("/bodies", {
         params: {
             // latitude: "33.775867",
             // longitude: "-84.39733",
@@ -21,4 +20,4 @@ const useBodies = () =>
         },
     });
 
-export default useBodies;
+export default usePlanets;

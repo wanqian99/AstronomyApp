@@ -1,7 +1,7 @@
-import { BodyQuery } from "../App";
+import { ObserverParams } from "../App";
 import useData from "./useData";
 
-interface BodiesPositionCellsPosition_altitude_azimuth {
+interface PlanetsPositionCellsPosition_altitude_azimuth {
     altitude: {
         degrees: number;
         string: string;
@@ -12,9 +12,9 @@ interface BodiesPositionCellsPosition_altitude_azimuth {
     };
 }
 
-interface BodiesPositionCellsPosition {
-    horizontal: BodiesPositionCellsPosition_altitude_azimuth;
-    horizonal: BodiesPositionCellsPosition_altitude_azimuth;
+interface PlanetsPositionCellsPosition {
+    horizontal: PlanetsPositionCellsPosition_altitude_azimuth;
+    horizonal: PlanetsPositionCellsPosition_altitude_azimuth;
     equatorial: {
         rightAscension: {
             hours: number;
@@ -32,7 +32,7 @@ interface BodiesPositionCellsPosition {
     };
 }
 
-interface BodiesPositionRow {
+interface PlanetsPositionRow {
 	entry: {
 		id: string;
 		name: string;
@@ -48,7 +48,7 @@ interface BodiesPositionRow {
                     km: number;
                 };
             },
-            position: BodiesPositionCellsPosition,
+            position: PlanetsPositionCellsPosition,
             extraInfo: {
                 elongation: number;
                 magnitude: number;
@@ -57,16 +57,16 @@ interface BodiesPositionRow {
     ];
 }
 
-interface BodiesPositionTable {
+interface PlanetsPositionTable {
 	table: {
 		// header: string[];
-		rows: BodiesPositionRow[];
+		rows: PlanetsPositionRow[];
 	};
 }
-const useBodiesPosition = (bodyQuery: BodyQuery) =>
+const usePlanetsPosition = (observerParams: ObserverParams) =>
     // api path link, axios request config, dependencies
-    useData<BodiesPositionTable>(
-        '/bodies/positions/' + bodyQuery.body,
+    useData<PlanetsPositionTable>(
+        '/bodies/positions/' + observerParams.planet,
         {params: {
             // latitude: "33.775867",
             // longitude: "-84.39733",
@@ -76,14 +76,14 @@ const useBodiesPosition = (bodyQuery: BodyQuery) =>
             // elevation: 1,
             // time: "12:00:00",
 
-            latitude: bodyQuery.latitude,
-            longitude: bodyQuery.longitude,
-            from_date: bodyQuery.from_date,
-            to_date: bodyQuery.to_date,
-            elevation: bodyQuery.elevation,
-            time: bodyQuery.time,
+            latitude: observerParams.latitude,
+            longitude: observerParams.longitude,
+            from_date: observerParams.from_date,
+            to_date: observerParams.to_date,
+            elevation: observerParams.elevation,
+            time: observerParams.time,
         }
         }, 
-        [bodyQuery]);
+        [observerParams]);
 
-export default useBodiesPosition;
+export default usePlanetsPosition;

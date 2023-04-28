@@ -1,19 +1,19 @@
-import { BodyQuery } from "../App";
-import useBodiesPosition from "../hooks/useBodiesPosition";
+import { ObserverParams } from "../App";
+import usePlanetsPosition from "../hooks/usePlanetsPosition";
 
 interface Props {
-	bodyQuery: BodyQuery;
+	observerParams: ObserverParams;
 }
 
-const BodiesPosition = ({ bodyQuery }: Props) => {
-	const { data, error, isLoading } = useBodiesPosition(bodyQuery);
+const PlanetsPosition = ({ observerParams }: Props) => {
+	const { data, error, isLoading } = usePlanetsPosition(observerParams);
 
 	if (error) return <p>{error}</p>;
-	if (isLoading) return <p>Loading Bodies Details...</p>;
+	if (isLoading) return <p>Loading Planets Details...</p>;
 
 	return (
 		<>
-			<p>Bodies Position:</p>
+			<p>Planets Position:</p>
 			{data?.table.rows.map(
 				(row) =>
 					row.cells.map((cell) => (
@@ -151,4 +151,4 @@ const BodiesPosition = ({ bodyQuery }: Props) => {
 	);
 };
 
-export default BodiesPosition;
+export default PlanetsPosition;

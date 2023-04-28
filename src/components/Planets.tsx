@@ -1,20 +1,22 @@
 import { Box } from "@mui/material";
-import React, { useEffect, useState } from "react";
-import BodiesComponent from "./BodiesComponent";
-import { BodyQuery } from "../App";
+import { useEffect, useState } from "react";
+import { ObserverParams } from "../App";
 import moment from "moment";
-import BodiesForm from "./BodiesForm";
-import BodiesQuery from "./BodiesQuery";
-import BodiesPosition from "./BodiesPosition";
+import PlanetsSelector from "./PlanetsSelector";
+import PlanetsForm from "./PlanetsForm";
+import PlanetsQuery from "./PlanetsQuery";
+import PlanetsPosition from "./PlanetsPosition";
 
 const Planets = () => {
-	const [bodyQuery, setBodyQuery] = useState<BodyQuery>({} as BodyQuery);
+	const [observerParams, setObserverParams] = useState<ObserverParams>(
+		{} as ObserverParams
+	);
 
 	useEffect(() => {
 		// set default values
-		setBodyQuery({
-			...bodyQuery,
-			body: "",
+		setObserverParams({
+			...observerParams,
+			planet: "",
 			latitude: 33.775867,
 			longitude: -84.39733,
 			from_date: moment().format("YYYY-MM-DD"),
@@ -27,16 +29,16 @@ const Planets = () => {
 	return (
 		<>
 			<Box>
-				<BodiesComponent
-					onSelectBody={(body) =>
-						setBodyQuery({ ...bodyQuery, body })
+				<PlanetsSelector
+					onSelectPlanet={(planet) =>
+						setObserverParams({ ...observerParams, planet })
 					}
 				/>
 
-				<BodiesForm
+				<PlanetsForm
 					submitForm={(newQuery) =>
-						setBodyQuery({
-							...bodyQuery,
+						setObserverParams({
+							...observerParams,
 							latitude: newQuery.latitude,
 							longitude: newQuery.longitude,
 							from_date: newQuery.from_date,
@@ -47,9 +49,9 @@ const Planets = () => {
 					}
 				/>
 
-				<BodiesQuery bodyQuery={bodyQuery} />
+				<PlanetsQuery observerParams={observerParams} />
 
-				<BodiesPosition bodyQuery={bodyQuery} />
+				<PlanetsPosition observerParams={observerParams} />
 			</Box>
 		</>
 	);

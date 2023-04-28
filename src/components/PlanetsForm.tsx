@@ -28,7 +28,7 @@ interface Props {
 	submitForm: (data: FormData) => void;
 }
 
-const BodiesForm = ({ submitForm }: Props) => {
+const PlanetsForm = ({ submitForm }: Props) => {
 	const {
 		register,
 		handleSubmit,
@@ -167,4 +167,4 @@ const BodiesForm = ({ submitForm }: Props) => {
 	);
 };
 
-export default BodiesForm;
+export default PlanetsForm;

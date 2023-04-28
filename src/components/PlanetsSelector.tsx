@@ -1,38 +1,38 @@
-import useBodies from "../hooks/useBodies";
+import usePlanets from "../hooks/usePlanets";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
-import { useContext, useState } from "react";
+import { useState } from "react";
 
 interface Props {
-	onSelectBody: (body: string) => void;
+	onSelectPlanet: (planet: string) => void;
 }
 
-const BodiesComponent = ({ onSelectBody }: Props) => {
-	const { data, error, isLoading } = useBodies();
+const PlanetsSelector = ({ onSelectPlanet }: Props) => {
+	const { data, error, isLoading } = usePlanets();
 	const [planet, setPlanet] = useState("All");
 
 	if (error) return <p>{error}</p>;
-	if (isLoading) return <p>Loading Bodies...</p>;
+	if (isLoading) return <p>Loading Planets...</p>;
 
 	const handleChange = (event: SelectChangeEvent) => {
 		// set planet to show selected planet on dropdown
 		setPlanet(event.target.value);
-		// parse selected body to parent component to fetch data
+		// parse selected planet to parent component to fetch data
 		// parse empty string if selected is All
 		if (event.target.value == "All") {
-			onSelectBody("");
+			onSelectPlanet("");
 		} else {
-			onSelectBody(event.target.value);
+			onSelectPlanet(event.target.value);
 		}
 	};
 
 	return (
 		<>
-			{/* {data?.bodies.map((body) => (
-				<button onClick={() => onSelectBody(body)} key={body}>
-					{body}
+			{/* {data?.bodies.map((planet) => (
+				<button onClick={() => onSelectPlanet(planet)} key={planet}>
+					{planet}
 				</button>
 			))} */}
 
@@ -49,13 +49,13 @@ const BodiesComponent = ({ onSelectBody }: Props) => {
 					<MenuItem value="All">
 						<em>All</em>
 					</MenuItem>
-					{data?.bodies.map((body) => (
+					{data?.bodies.map((p) => (
 						<MenuItem
-							value={body}
-							key={body}
+							value={p}
+							key={p}
 							style={{ textTransform: "capitalize" }}
 						>
-							{body}
+							{p}
 						</MenuItem>
 					))}
 				</Select>
@@ -64,4 +64,4 @@ const BodiesComponent = ({ onSelectBody }: Props) => {
 	);
 };
 
-export default BodiesComponent;
+export default PlanetsSelector;
