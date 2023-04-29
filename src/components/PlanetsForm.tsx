@@ -1,7 +1,8 @@
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { DevTool } from "@hookform/devtools";
+
 import {
 	Box,
 	Button,
@@ -12,6 +13,11 @@ import {
 	TextField,
 	Typography,
 } from "@mui/material";
+import { grey } from "@mui/material/colors";
+import { useState } from "react";
+import { DatePicker } from "@mui/x-date-pickers";
+import moment from "moment";
+import { format } from "date-fns";
 
 const schema = z.object({
 	latitude: z
@@ -93,8 +99,9 @@ const PlanetsForm = ({ submitForm }: Props) => {
 							// check date range
 							// if function returns true, submit and reset form
 							if (checkDateRange(data)) {
+								console.log(data);
 								submitForm(data);
-								reset();
+								// reset();
 							}
 						})}
 					>
@@ -111,6 +118,14 @@ const PlanetsForm = ({ submitForm }: Props) => {
 									})}
 									error={!!errors.latitude}
 									helperText={errors.latitude?.message}
+									sx={{
+										"& .MuiFormLabel-root": {
+											color: grey[400],
+										},
+										"& .MuiFormLabel-root.Mui-focused": {
+											color: "primary.main",
+										},
+									}}
 								/>
 								<TextField
 									fullWidth
@@ -123,10 +138,85 @@ const PlanetsForm = ({ submitForm }: Props) => {
 									})}
 									error={!!errors.longitude}
 									helperText={errors.longitude?.message}
+									sx={{
+										"& .MuiFormLabel-root": {
+											color: grey[400],
+										},
+										"& .MuiFormLabel-root.Mui-focused": {
+											color: "primary.main",
+										},
+									}}
 								/>
 							</Stack>
 							<Stack direction={"row"} spacing={1}>
-								<TextField
+								<Controller
+									name="from_date"
+									control={control}
+									render={({
+										field: {
+											onChange,
+											value,
+											...from_date
+										},
+										fieldState: { error },
+									}) => (
+										<DatePicker
+											inputFormat="YYYY-MM-DD"
+											value={value}
+											// onChange={onChange}
+											onChange={(e) =>
+												onChange(
+													moment(e).format(
+														"YYYY-MM-DD"
+													)
+												)
+											}
+											renderInput={(params) => (
+												<TextField
+													{...params}
+													fullWidth
+													label="Start Date"
+													error={Boolean(error)}
+													helperText={error?.message}
+												/>
+											)}
+											{...from_date}
+										/>
+									)}
+								/>
+								<Controller
+									name="to_date"
+									control={control}
+									render={({
+										field: { onChange, value, ...to_date },
+										fieldState: { error },
+									}) => (
+										<DatePicker
+											inputFormat="YYYY-MM-DD"
+											value={value}
+											// onChange={onChange}
+											onChange={(e) =>
+												onChange(
+													moment(e).format(
+														"YYYY-MM-DD"
+													)
+												)
+											}
+											renderInput={(params) => (
+												<TextField
+													{...params}
+													fullWidth
+													label="End Date"
+													error={Boolean(error)}
+													helperText={error?.message}
+												/>
+											)}
+											{...to_date}
+										/>
+									)}
+								/>
+								{/* <TextField
+									defaultValue={new Date("01-01-2023")}
 									fullWidth
 									InputLabelProps={{ shrink: true }}
 									label="Start Date"
@@ -136,8 +226,16 @@ const PlanetsForm = ({ submitForm }: Props) => {
 									{...register("from_date")}
 									error={!!errors.from_date}
 									helperText={errors.from_date?.message}
-								/>
-								<TextField
+									sx={{
+										"& .MuiFormLabel-root": {
+											color: grey[400],
+										},
+										"& .MuiFormLabel-root.Mui-focused": {
+											color: "primary.main",
+										},
+									}}
+								/> */}
+								{/* <TextField
 									fullWidth
 									InputLabelProps={{ shrink: true }}
 									label="End Date"
@@ -147,7 +245,15 @@ const PlanetsForm = ({ submitForm }: Props) => {
 									{...register("to_date")}
 									error={!!errors.to_date}
 									helperText={errors.to_date?.message}
-								/>
+									sx={{
+										"& .MuiFormLabel-root": {
+											color: grey[400],
+										},
+										"& .MuiFormLabel-root.Mui-focused": {
+											color: "primary.main",
+										},
+									}}
+								/> */}
 							</Stack>
 							<Stack direction={"row"} spacing={1}>
 								<TextField
@@ -161,6 +267,14 @@ const PlanetsForm = ({ submitForm }: Props) => {
 									})}
 									error={!!errors.elevation}
 									helperText={errors.elevation?.message}
+									sx={{
+										"& .MuiFormLabel-root": {
+											color: grey[400],
+										},
+										"& .MuiFormLabel-root.Mui-focused": {
+											color: "primary.main",
+										},
+									}}
 								/>
 								<TextField
 									fullWidth
@@ -180,23 +294,44 @@ const PlanetsForm = ({ submitForm }: Props) => {
 									})}
 									error={!!errors.time}
 									helperText={errors.time?.message}
+									sx={{
+										"& .MuiFormLabel-root": {
+											color: grey[400],
+										},
+										"& .MuiFormLabel-root.Mui-focused": {
+											color: "primary.main",
+										},
+									}}
 								/>
 							</Stack>
 						</Stack>
 
-						<Stack>
+						<Stack
+							direction={"row"}
+							spacing={1}
+							sx={{ marginTop: "10px" }}
+						>
+							<Button
+								type="reset"
+								size="medium"
+								variant="contained"
+								color="primary"
+								sx={{ marginLeft: "auto" }}
+								onClick={() => reset()}
+							>
+								Reset
+							</Button>
 							<Button
 								type="submit"
 								size="medium"
 								variant="contained"
 								color="primary"
-								sx={{ marginLeft: "auto", marginTop: "10px" }}
 							>
 								Submit
 							</Button>
 						</Stack>
 					</form>
-					<DevTool control={control} />
+					{/* <DevTool control={control} /> */}
 				</CardContent>
 			</Card>
 

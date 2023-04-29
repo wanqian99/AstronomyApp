@@ -8,12 +8,16 @@ import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import { BrowserRouter } from "react-router-dom";
 import ColorModeContextProvider from "./theme.tsx";
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
 	<React.StrictMode>
 		<BrowserRouter>
 			<ColorModeContextProvider>
-				<App />
+				<LocalizationProvider dateAdapter={AdapterMoment}>
+					<App />
+				</LocalizationProvider>
 			</ColorModeContextProvider>
 		</BrowserRouter>
 	</React.StrictMode>

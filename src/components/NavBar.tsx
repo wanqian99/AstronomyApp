@@ -66,12 +66,12 @@ const NavBar = (props: Props) => {
 			<Typography variant="h6" sx={{ my: 2 }}>
 				<NightsStayRoundedIcon
 					fontSize="large"
-					color="secondary"
+					color="primary"
 					sx={{ fontSize: "45px" }}
 				/>
 				<AutoAwesomeIcon
 					fontSize="small"
-					color="secondary"
+					color="primary"
 					sx={{ marginLeft: "-20px", marginBottom: "16px" }}
 				/>
 			</Typography>

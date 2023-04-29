@@ -105,11 +105,11 @@ const ColorModeContextProvider = ({ children }: Props) => {
 								////// palette values for light mode
 								// nav
 								primary: {
-									main: purple[300],
+									main: purple[900],
 								},
 								// toggle mode icon, drawer moonstar icon
 								secondary: {
-									main: purple[900],
+									main: purple[300],
 								},
 								divider: purple[900],
 								//content
@@ -125,11 +125,11 @@ const ColorModeContextProvider = ({ children }: Props) => {
 								////// palette values for dark mode
 								//nav
 								primary: {
-									main: purple[900],
+									main: purple[300],
 								},
 								// toggle mode icon
 								secondary: {
-									main: purple[300],
+									main: purple[900],
 								},
 								divider: purple[300],
 								//content
