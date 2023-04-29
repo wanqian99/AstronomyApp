@@ -66,12 +66,12 @@ const NavBar = (props: Props) => {
 			<Typography variant="h6" sx={{ my: 2 }}>
 				<NightsStayRoundedIcon
 					fontSize="large"
-					color="primary"
+					color="secondary"
 					sx={{ fontSize: "45px" }}
 				/>
 				<AutoAwesomeIcon
 					fontSize="small"
-					color="primary"
+					color="secondary"
 					sx={{ marginLeft: "-20px", marginBottom: "16px" }}
 				/>
 			</Typography>
@@ -86,7 +86,9 @@ const NavBar = (props: Props) => {
 						>
 							<ListItemText
 								primary={"Home"}
-								sx={{ color: "text.primary" }}
+								sx={{
+									color: "text.primary",
+								}}
 							/>
 						</ListItemButton>
 					</ListItem>
@@ -95,7 +97,9 @@ const NavBar = (props: Props) => {
 					<NavLink
 						key={item}
 						to={`${item}`}
-						style={{ textDecoration: "none", color: "black" }}
+						style={{
+							textDecoration: "none",
+						}}
 					>
 						<ListItem disablePadding>
 							<ListItemButton

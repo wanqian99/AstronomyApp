@@ -1,4 +1,4 @@
-import { Box, Grid } from "@mui/material";
+import { Box, Divider, Grid, Stack, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { ObserverParams } from "../App";
 import moment from "moment";
@@ -30,15 +30,18 @@ const Planets = () => {
 		<>
 			<Grid
 				container
-				spacing={2}
-				direction="row"
-				justifyContent="center"
-				alignItems="flex-start"
+				// direction="row"
+				rowSpacing={2}
+				// columnSpacing={10}
+				// justifyContent="center"
+				// alignItems="flex-start"
 				// direction="column"
 				// alignItems="center"
 				// justifyContent="center"
 				sx={{
+					maxWidth: "100%",
 					margin: "5px auto",
+					// backgroundColor: "background",
 				}}
 			>
 				<Grid item xs={12} md={4}>
@@ -55,14 +58,35 @@ const Planets = () => {
 							})
 						}
 					/>
-					<PlanetsQuery observerParams={observerParams} />
+					{/* <PlanetsQuery observerParams={observerParams} /> */}
 				</Grid>
 				<Grid item xs={12} md={8}>
-					<PlanetsSelector
-						onSelectPlanet={(planet) =>
-							setObserverParams({ ...observerParams, planet })
-						}
+					<Stack
+						direction={"row"}
+						sx={{
+							maxWidth: "90%",
+							justifyContent: "space-between",
+							alignItems: "flex-end",
+							margin: "5px auto",
+						}}
+					>
+						<Typography variant="h5" color={"#ba68c8"}>
+							Planets Position:{" "}
+						</Typography>
+						{/* Planets Selector */}
+						<PlanetsSelector
+							onSelectPlanet={(planet) =>
+								setObserverParams({ ...observerParams, planet })
+							}
+						/>
+					</Stack>
+					<Divider
+						sx={{
+							maxWidth: "90%",
+							margin: "10px auto",
+						}}
 					/>
+					{/* Planets Position Cards */}
 					<PlanetsPosition observerParams={observerParams} />
 				</Grid>
 			</Grid>

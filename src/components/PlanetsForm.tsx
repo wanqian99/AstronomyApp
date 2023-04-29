@@ -1,23 +1,18 @@
 import { Controller, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { DevTool } from "@hookform/devtools";
 
 import {
-	Box,
 	Button,
 	Card,
-	CardActions,
 	CardContent,
 	Stack,
 	TextField,
 	Typography,
 } from "@mui/material";
 import { grey } from "@mui/material/colors";
-import { useState } from "react";
 import { DatePicker, TimePicker } from "@mui/x-date-pickers";
 import moment from "moment";
-import { format } from "date-fns";
 
 const schema = z.object({
 	latitude: z
@@ -87,14 +82,12 @@ const PlanetsForm = ({ submitForm }: Props) => {
 				sx={{
 					maxWidth: "90%",
 					margin: "auto",
-					// backgroundColor: "primary",
-					// border: "1px solid white",
 				}}
 			>
 				<CardContent>
 					<Typography
 						// sx={{ fontSize: 16 }}
-						color="text.primary"
+						color="text.secondary"
 						variant="subtitle1"
 						gutterBottom
 					>
@@ -170,7 +163,6 @@ const PlanetsForm = ({ submitForm }: Props) => {
 										<DatePicker
 											inputFormat="YYYY-MM-DD"
 											value={value}
-											// onChange={onChange}
 											onChange={(e) =>
 												onChange(
 													moment(e).format(
@@ -202,7 +194,6 @@ const PlanetsForm = ({ submitForm }: Props) => {
 										<DatePicker
 											inputFormat="YYYY-MM-DD"
 											value={value}
-											// onChange={onChange}
 											onChange={(e) =>
 												onChange(
 													moment(e).format(
@@ -224,46 +215,6 @@ const PlanetsForm = ({ submitForm }: Props) => {
 										/>
 									)}
 								/>
-
-								{/* <TextField
-									defaultValue={new Date("01-01-2023")}
-									fullWidth
-									InputLabelProps={{ shrink: true }}
-									label="Start Date"
-									type="date"
-									size="small"
-									variant="outlined"
-									{...register("from_date")}
-									error={!!errors.from_date}
-									helperText={errors.from_date?.message}
-									sx={{
-										"& .MuiFormLabel-root": {
-											color: grey[400],
-										},
-										"& .MuiFormLabel-root.Mui-focused": {
-											color: "primary.main",
-										},
-									}}
-								/> */}
-								{/* <TextField
-									fullWidth
-									InputLabelProps={{ shrink: true }}
-									label="End Date"
-									type="date"
-									size="small"
-									variant="outlined"
-									{...register("to_date")}
-									error={!!errors.to_date}
-									helperText={errors.to_date?.message}
-									sx={{
-										"& .MuiFormLabel-root": {
-											color: grey[400],
-										},
-										"& .MuiFormLabel-root.Mui-focused": {
-											color: "primary.main",
-										},
-									}}
-								/> */}
 							</Stack>
 							<Stack direction={"row"} spacing={1}>
 								<TextField
@@ -294,38 +245,14 @@ const PlanetsForm = ({ submitForm }: Props) => {
 										fieldState: { error },
 									}) => (
 										<TimePicker
-											// inputFormat="HH:mm:ss"
+											inputFormat="HH:mm A"
 											value={value}
-											// onChange={onChange}
-											onChange={
-												(e) =>
-													onChange(
-														moment(e).format(
-															"YYYY-MM-DD HH:mm:ss"
-														)
+											onChange={(e) =>
+												onChange(
+													moment(e).format(
+														"YYYY-MM-DD HH:mm:ss"
 													)
-												// onChange(
-												// 	new Date(e).getTime()
-												// )
-												// console.log(
-												// 	// e.format("hh:mm:ss")
-												// 	// moment(e).format("h:mm:ss")
-												// 	// 	.toISOString()
-												// 	// moment(e, "hh:mm:ss", true)
-												// e
-												// 	? new Date(
-												// 			e
-												// 	  ).getHours() +
-												// 			":" +
-												// 			new Date(
-												// 				e
-												// 			).getMinutes() +
-												// 			":" +
-												// 			new Date(
-												// 				e
-												// 			).getSeconds()
-												// 	: ""
-												// )
+												)
 											}
 											renderInput={(params) => (
 												<TextField
@@ -341,33 +268,6 @@ const PlanetsForm = ({ submitForm }: Props) => {
 										/>
 									)}
 								/>
-								{/* <TextField
-									fullWidth
-									InputLabelProps={{ shrink: true }}
-									label="Time"
-									type="time"
-									size="small"
-									variant="outlined"
-									{...register("time", {
-										setValueAs: (v) => {
-											if (v !== "") {
-												return v + ":00";
-											} else {
-												console.log(v);
-											}
-										},
-									})}
-									error={!!errors.time}
-									helperText={errors.time?.message}
-									sx={{
-										"& .MuiFormLabel-root": {
-											color: grey[400],
-										},
-										"& .MuiFormLabel-root.Mui-focused": {
-											color: "primary.main",
-										},
-									}}
-								/> */}
 							</Stack>
 						</Stack>
 
@@ -380,8 +280,11 @@ const PlanetsForm = ({ submitForm }: Props) => {
 								type="reset"
 								size="medium"
 								variant="contained"
-								color="primary"
-								sx={{ marginLeft: "auto" }}
+								sx={{
+									marginLeft: "auto",
+									color: "background.default",
+									backgroundColor: "#ba68c8",
+								}}
 								onClick={() => reset()}
 							>
 								Reset
@@ -390,120 +293,17 @@ const PlanetsForm = ({ submitForm }: Props) => {
 								type="submit"
 								size="medium"
 								variant="contained"
-								color="primary"
+								sx={{
+									color: "background.default",
+									backgroundColor: "#ba68c8",
+								}}
 							>
 								Submit
 							</Button>
 						</Stack>
 					</form>
-					{/* <DevTool control={control} /> */}
 				</CardContent>
 			</Card>
-
-			{/* <form
-				onSubmit={handleSubmit((data) => {
-					// check date range
-					// if function returns true, submit and reset form
-					if (checkDateRange(data)) {
-						submitForm(data);
-						reset();
-					}
-				})}
-			> */}
-			{/* <div className="mb-3">
-					<label htmlFor="latitude" className="form-label">
-						Latitude
-					</label>
-					<input
-						id="latitude"
-						type="text"
-						className="form-control"
-						{...register("latitude", { valueAsNumber: true })}
-					/>
-					{errors.latitude && (
-						<p className="text-danger">{errors.latitude.message}</p>
-					)}
-				</div> */}
-			{/* <div className="mb-3">
-					<label htmlFor="longitude" className="form-label">
-						Longitude
-					</label>
-					<input
-						id="longitude"
-						type="text"
-						className="form-control"
-						{...register("longitude", { valueAsNumber: true })}
-					/>
-					{errors.longitude && (
-						<p className="text-danger">
-							{errors.longitude.message}
-						</p>
-					)}
-				</div> */}
-			{/* <div className="mb-3">
-					<label htmlFor="date_range" className="form-label">
-						Date Range
-					</label>
-					<input
-						id="date_range"
-						type="date"
-						className="form-control"
-						{...register("from_date")}
-					/>
-					{" - "}
-					<input
-						id="date_range"
-						type="date"
-						className="form-control"
-						{...register("to_date")}
-					/>
-					{errors.from_date && (
-						<p className="text-danger">
-							{errors.from_date.message}
-						</p>
-					)}
-					{errors.to_date && (
-						<p className="text-danger">{errors.to_date.message}</p>
-					)}
-				</div> */}
-			{/* <div className="mb-3">
-					<label htmlFor="elevation" className="form-label">
-						Elevation
-					</label>
-					<input
-						id="elevation"
-						type="number"
-						className="form-control"
-						{...register("elevation", {
-							valueAsNumber: true,
-						})}
-					/>
-					{errors.elevation && (
-						<p className="text-danger">
-							{errors.elevation.message}
-						</p>
-					)}
-				</div> */}
-			{/* <div className="mb-3">
-					<label htmlFor="time" className="form-label">
-						Time
-					</label>
-					<input
-						id="time"
-						type="time"
-						className="form-control"
-						{...register("time", {
-							setValueAs: (v) => v + ":00",
-						})}
-					/>
-					{errors.time && (
-						<p className="text-danger">{errors.time.message}</p>
-					)}
-				</div> */}
-			{/* <button type="submit" className="btn btn-primary">
-					Submit
-				</button> */}
-			{/* </form> */}
 		</>
 	);
 };
