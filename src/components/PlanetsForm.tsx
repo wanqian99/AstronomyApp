@@ -15,7 +15,7 @@ import {
 } from "@mui/material";
 import { grey } from "@mui/material/colors";
 import { useState } from "react";
-import { DatePicker } from "@mui/x-date-pickers";
+import { DatePicker, TimePicker } from "@mui/x-date-pickers";
 import moment from "moment";
 import { format } from "date-fns";
 
@@ -74,6 +74,12 @@ const PlanetsForm = ({ submitForm }: Props) => {
 		return true;
 	};
 
+	const formatTime = (data: FormData) => {
+		console.log(data.time);
+		data.time = moment(data.time).format("HH:mm:ss");
+		console.log(data.time);
+	};
+
 	return (
 		<>
 			<Card
@@ -97,9 +103,10 @@ const PlanetsForm = ({ submitForm }: Props) => {
 					<form
 						onSubmit={handleSubmit((data) => {
 							// check date range
-							// if function returns true, submit and reset form
+							// if function returns true, change time data to correct format,
+							// and submit form
 							if (checkDateRange(data)) {
-								console.log(data);
+								formatTime(data);
 								submitForm(data);
 								// reset();
 							}
@@ -175,6 +182,7 @@ const PlanetsForm = ({ submitForm }: Props) => {
 												<TextField
 													{...params}
 													fullWidth
+													size="small"
 													label="Start Date"
 													error={Boolean(error)}
 													helperText={error?.message}
@@ -206,6 +214,7 @@ const PlanetsForm = ({ submitForm }: Props) => {
 												<TextField
 													{...params}
 													fullWidth
+													size="small"
 													label="End Date"
 													error={Boolean(error)}
 													helperText={error?.message}
@@ -215,6 +224,7 @@ const PlanetsForm = ({ submitForm }: Props) => {
 										/>
 									)}
 								/>
+
 								{/* <TextField
 									defaultValue={new Date("01-01-2023")}
 									fullWidth
@@ -276,7 +286,62 @@ const PlanetsForm = ({ submitForm }: Props) => {
 										},
 									}}
 								/>
-								<TextField
+								<Controller
+									name="time"
+									control={control}
+									render={({
+										field: { onChange, value, ...time },
+										fieldState: { error },
+									}) => (
+										<TimePicker
+											// inputFormat="HH:mm:ss"
+											value={value}
+											// onChange={onChange}
+											onChange={
+												(e) =>
+													onChange(
+														moment(e).format(
+															"YYYY-MM-DD HH:mm:ss"
+														)
+													)
+												// onChange(
+												// 	new Date(e).getTime()
+												// )
+												// console.log(
+												// 	// e.format("hh:mm:ss")
+												// 	// moment(e).format("h:mm:ss")
+												// 	// 	.toISOString()
+												// 	// moment(e, "hh:mm:ss", true)
+												// e
+												// 	? new Date(
+												// 			e
+												// 	  ).getHours() +
+												// 			":" +
+												// 			new Date(
+												// 				e
+												// 			).getMinutes() +
+												// 			":" +
+												// 			new Date(
+												// 				e
+												// 			).getSeconds()
+												// 	: ""
+												// )
+											}
+											renderInput={(params) => (
+												<TextField
+													{...params}
+													fullWidth
+													size="small"
+													label="Time"
+													error={Boolean(error)}
+													helperText={error?.message}
+												/>
+											)}
+											{...time}
+										/>
+									)}
+								/>
+								{/* <TextField
 									fullWidth
 									InputLabelProps={{ shrink: true }}
 									label="Time"
@@ -302,7 +367,7 @@ const PlanetsForm = ({ submitForm }: Props) => {
 											color: "primary.main",
 										},
 									}}
-								/>
+								/> */}
 							</Stack>
 						</Stack>
 
