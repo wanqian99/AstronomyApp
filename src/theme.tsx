@@ -1,5 +1,4 @@
-import { colors } from "@mui/material";
-import { grey, purple } from "@mui/material/colors";
+import { grey, purple, blue, indigo } from "@mui/material/colors";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { ReactNode, createContext, useMemo, useState } from "react";
 
@@ -106,21 +105,77 @@ const ColorModeContextProvider = ({ children }: Props) => {
 					// 	default: grey[900],
 					// 	// paper: pink[50],
 					// },
+					// ...(mode === "light"
+					// 	? {
+					// 			////// palette values for light mode
+					// 			// nav
+					// 			primary: {
+					// 				// main: purple[900],
+					// 				main: purple[300],
+					// 			},
+					// 			// toggle mode icon
+					// 			secondary: {
+					// 				// main: purple[300],
+					// 				main: purple[900],
+					// 			},
+					// 			// divider
+					// 			divider: purple[900],
+					// 			//content, form button text
+					// 			background: {
+					// 				// default: "#fff",
+					// 				default: grey[100],
+					// 				// paper: deepOrange[900],
+					// 			},
+					// 			text: {
+					// 				// drawer text
+					// 				primary: "#000",
+					// 				// position card text
+					// 				secondary: "#000",
+					// 			},
+					// 	  }
+					// 	: {
+					// 			////// palette values for dark mode
+					// 			//nav
+					// 			primary: {
+					// 				// main: purple[300],
+					// 				main: "#000",
+					// 			},
+					// 			// toggle mode icon
+					// 			secondary: {
+					// 				main: purple[300],
+					// 			},
+					// 			// divider
+					// 			divider: purple[300],
+					// 			//content, form button text
+					// 			background: {
+					// 				default: grey[900],
+					// 				// paper: deepOrange[900],
+					// 			},
+					// 			text: {
+					// 				// drawer text
+					// 				primary: purple[300],
+					// 				// position card text
+					// 				secondary: grey[400],
+					// 			},
+					// 	  }),
+
 					...(mode === "light"
 						? {
 								////// palette values for light mode
 								// nav
 								primary: {
 									// main: purple[900],
-									main: purple[300],
+									main: indigo[900],
 								},
-								// toggle mode icon
+								//
 								secondary: {
 									// main: purple[300],
-									main: purple[900],
+									main: "#fff",
 								},
-								// divider
-								divider: purple[900],
+								// divider, drawer moonstar icon,
+								// planet form title, planet form buttons,
+								// planet position title
+								divider: indigo[900],
 								//content, form button text
 								background: {
 									// default: "#fff",
@@ -141,12 +196,14 @@ const ColorModeContextProvider = ({ children }: Props) => {
 									// main: purple[300],
 									main: "#000",
 								},
-								// toggle mode icon
+								//
 								secondary: {
-									main: purple[300],
+									main: indigo[300],
 								},
-								// divider
-								divider: purple[300],
+								// divider, drawer moonstar icon,
+								// planet form title, planet form buttons,
+								// planet position title
+								divider: indigo[300],
 								//content, form button text
 								background: {
 									default: grey[900],
@@ -154,7 +211,8 @@ const ColorModeContextProvider = ({ children }: Props) => {
 								},
 								text: {
 									// drawer text
-									primary: purple[300],
+									// primary: indigo[300],
+									primary: "#fff",
 									// position card text
 									secondary: grey[400],
 								},

@@ -5,7 +5,7 @@
 
 /* form textfield label focused */
 .form .MuiFormLabel-root.Mui-focused {
-    color: #ba68c8;
+    color: #7986cb;
 }
 
 /* form textfield input */
@@ -15,11 +15,11 @@
 
 /* form textfield border hovered */
 .form .MuiOutlinedInput-root:hover fieldset {
-    border-color: #ba68c8;
+    border-color: #7986cb;
     border-width: 2px;
 }
 
 /* form textfield border focused */
 .form .MuiOutlinedInput-root.Mui-focused fieldset {
-    border-color: #ba68c8;
+    border-color: #7986cb;
 }

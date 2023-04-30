@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 // import {
 // 	AppBar,
 // 	Button,
@@ -33,6 +33,9 @@ import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
 import { NavLink, Outlet } from "react-router-dom";
 import LightDarkToggleButton from "./LightDarkToggleButton";
 
+import { grey, purple, blue, indigo } from "@mui/material/colors";
+import { ColorModeContext } from "../theme";
+
 interface Props {
 	/**
 	 * Injected by the documentation to work in an iframe.
@@ -45,6 +48,8 @@ const drawerWidth = 240;
 const navItems = ["Planets", "Star Chart", "Moon Phase"];
 
 const NavBar = (props: Props) => {
+	const { mode } = useContext(ColorModeContext);
+
 	const { window } = props;
 	const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -66,13 +71,15 @@ const NavBar = (props: Props) => {
 			<Typography variant="h6" sx={{ my: 2 }}>
 				<NightsStayRoundedIcon
 					fontSize="large"
-					color="secondary"
-					sx={{ fontSize: "45px" }}
+					sx={{ fontSize: "45px", color: "divider" }}
 				/>
 				<AutoAwesomeIcon
 					fontSize="small"
-					color="secondary"
-					sx={{ marginLeft: "-20px", marginBottom: "16px" }}
+					sx={{
+						marginLeft: "-20px",
+						marginBottom: "16px",
+						color: "divider",
+					}}
 				/>
 			</Typography>
 			<Divider />
@@ -154,19 +161,22 @@ const NavBar = (props: Props) => {
 							to="/"
 							style={({ isActive }) => {
 								return {
-									color: isActive ? "lemonchiffon" : "white",
+									color: isActive
+										? "lemonchiffon"
+										: "#7986cb",
 								};
 							}}
 						>
 							<NightsStayRoundedIcon
 								fontSize="large"
-								sx={{ fontSize: "45px" }}
+								sx={{ fontSize: "45px", marginTop: "5px" }}
 							/>
 							<AutoAwesomeIcon
 								fontSize="small"
 								sx={{
 									marginLeft: "-20px",
 									marginBottom: "16px",
+									marginTop: "5px",
 								}}
 							/>
 						</NavLink>
@@ -181,9 +191,17 @@ const NavBar = (props: Props) => {
 									return {
 										display: "inline-block",
 										textDecoration: "none",
-										borderBottom: isActive
-											? "3px solid white"
-											: "",
+										borderBottomWidth: isActive
+											? "3px"
+											: "0px",
+										borderBottomStyle: isActive
+											? "solid"
+											: "none",
+										borderBottomColor: isActive
+											? mode == "light"
+												? "white"
+												: "#7986cb"
+											: "pink",
 									};
 								}}
 							>

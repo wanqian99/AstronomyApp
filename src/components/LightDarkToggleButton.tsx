@@ -15,7 +15,7 @@ const LightDarkToggleButton = () => {
 				justifyContent: { xs: "space-between", sm: "none" },
 				borderWidth: { xs: "1px", sm: 0 },
 				borderStyle: { xs: "solid", sm: "none" },
-				borderColor: { xs: "secondary.main", sm: "none" },
+				borderColor: { xs: "divider", sm: "none" },
 				borderRadius: { xs: "8px", sm: 0 },
 				padding: { xs: "5px 10px", sm: 0 },
 			}}
@@ -24,7 +24,7 @@ const LightDarkToggleButton = () => {
 				sx={{
 					display: { xs: "block", sm: "none" },
 					alignSelf: "center",
-					color: "secondary.main",
+					color: "divider",
 				}}
 			>
 				{mode} mode
@@ -33,7 +33,7 @@ const LightDarkToggleButton = () => {
 			<IconButton
 				sx={{
 					ml: { xs: 8, sm: 0 },
-					color: "secondary.main",
+					color: { xs: "divider", sm: "#7986cb" },
 				}}
 				onClick={toggleColorMode}
 			>

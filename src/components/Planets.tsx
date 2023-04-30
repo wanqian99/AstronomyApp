@@ -75,7 +75,7 @@ const Planets = () => {
 							justifyContent="space-between"
 							alignItems={"flex-end"}
 						>
-							<Typography variant="h5" color={"#ba68c8"}>
+							<Typography variant="h5" color={"divider"}>
 								Planets Position:{" "}
 							</Typography>
 							{/* Planets Selector */}

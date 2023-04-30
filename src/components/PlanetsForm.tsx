@@ -1,5 +1,5 @@
 import { Controller, useForm } from "react-hook-form";
-import { undefined, z } from "zod";
+import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
 	Button,
@@ -9,7 +9,6 @@ import {
 	TextField,
 	Typography,
 } from "@mui/material";
-import { grey } from "@mui/material/colors";
 import { DatePicker, TimePicker } from "@mui/x-date-pickers";
 import moment from "moment";
 import { useEffect } from "react";
@@ -98,9 +97,10 @@ const PlanetsForm = ({ submitForm }: Props) => {
 				<CardContent>
 					<Typography
 						// sx={{ fontSize: 16 }}
-						color="#ba68c8"
-						variant="subtitle1"
 						gutterBottom
+						color="divider"
+						variant="subtitle1"
+						sx={{ ml: 1, mt: 1, mb: 3 }}
 					>
 						Planet Query Form:
 					</Typography>
@@ -276,7 +276,7 @@ const PlanetsForm = ({ submitForm }: Props) => {
 								sx={{
 									marginLeft: "auto",
 									color: "background.default",
-									backgroundColor: "#ba68c8",
+									backgroundColor: "divider",
 								}}
 								onClick={() => reset()}
 							>
@@ -288,7 +288,7 @@ const PlanetsForm = ({ submitForm }: Props) => {
 								variant="contained"
 								sx={{
 									color: "background.default",
-									backgroundColor: "#ba68c8",
+									backgroundColor: "divider",
 								}}
 							>
 								Submit
