@@ -4,7 +4,6 @@ import { ObserverParams } from "../App";
 import moment from "moment";
 import PlanetsSelector from "./PlanetsSelector";
 import PlanetsForm from "./PlanetsForm";
-import PlanetsQuery from "./PlanetsQuery";
 import PlanetsPosition from "./PlanetsPosition";
 
 const Planets = () => {
@@ -30,64 +29,70 @@ const Planets = () => {
 		<>
 			<Grid
 				container
-				// direction="row"
-				rowSpacing={2}
-				// columnSpacing={10}
-				// justifyContent="center"
-				// alignItems="flex-start"
-				// direction="column"
-				// alignItems="center"
-				// justifyContent="center"
+				rowSpacing={5}
 				sx={{
-					maxWidth: "100%",
-					margin: "5px auto",
-					// backgroundColor: "background",
+					maxWidth: "96%",
+					justifyContent: "center",
+					margin: "0 auto",
 				}}
 			>
-				<Grid item xs={12} md={4}>
-					<PlanetsForm
-						submitForm={(newQuery) =>
-							setObserverParams({
-								...observerParams,
-								latitude: newQuery.latitude,
-								longitude: newQuery.longitude,
-								from_date: newQuery.from_date,
-								to_date: newQuery.to_date,
-								elevation: newQuery.elevation,
-								time: newQuery.time,
-							})
-						}
-					/>
-					{/* <PlanetsQuery observerParams={observerParams} /> */}
-				</Grid>
-				<Grid item xs={12} md={8}>
-					<Stack
-						direction={"row"}
+				<Grid item xs={11} md={4}>
+					<Box
 						sx={{
-							maxWidth: "90%",
-							justifyContent: "space-between",
-							alignItems: "flex-end",
-							margin: "5px auto",
+							maxWidth: { md: "98%", xs: "100%" },
+							marginLeft: "0",
+							marginRight: "auto",
 						}}
 					>
-						<Typography variant="h5" color={"#ba68c8"}>
-							Planets Position:{" "}
-						</Typography>
-						{/* Planets Selector */}
-						<PlanetsSelector
-							onSelectPlanet={(planet) =>
-								setObserverParams({ ...observerParams, planet })
+						{/* Planets Query Form */}
+						<PlanetsForm
+							submitForm={(newQuery) =>
+								setObserverParams({
+									...observerParams,
+									latitude: newQuery.latitude,
+									longitude: newQuery.longitude,
+									from_date: newQuery.from_date,
+									to_date: newQuery.to_date,
+									elevation: newQuery.elevation,
+									time: newQuery.time,
+								})
 							}
 						/>
-					</Stack>
-					<Divider
+						{/* <PlanetsQuery observerParams={observerParams} /> */}
+					</Box>
+				</Grid>
+				<Grid item xs={11} md={8}>
+					<Box
 						sx={{
-							maxWidth: "90%",
-							margin: "10px auto",
+							maxWidth: { md: "98%", xs: "100%" },
+							marginLeft: "auto",
+							marginRight: "0",
 						}}
-					/>
-					{/* Planets Position Cards */}
-					<PlanetsPosition observerParams={observerParams} />
+					>
+						{/* Planets Position Title and Selector Row */}
+						<Stack
+							direction="row"
+							justifyContent="space-between"
+							alignItems={"flex-end"}
+						>
+							<Typography variant="h5" color={"#ba68c8"}>
+								Planets Position:{" "}
+							</Typography>
+							{/* Planets Selector */}
+							<PlanetsSelector
+								onSelectPlanet={(planet) =>
+									setObserverParams({
+										...observerParams,
+										planet,
+									})
+								}
+							/>
+						</Stack>
+						{/* Divider */}
+						<Divider sx={{ margin: "10px auto" }} />
+						{/* Planets Position Cards */}
+						<PlanetsPosition observerParams={observerParams} />
+					</Box>
 				</Grid>
 			</Grid>
 		</>

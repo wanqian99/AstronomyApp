@@ -1,0 +1,25 @@
+/* form textfield label unfocused */
+.form .MuiFormLabel-root {
+    color: lightgrey;
+}
+
+/* form textfield label focused */
+.form .MuiFormLabel-root.Mui-focused {
+    color: #ba68c8;
+}
+
+/* form textfield input */
+/* .form .MuiOutlinedInput-root {
+    color: white;
+} */
+
+/* form textfield border hovered */
+.form .MuiOutlinedInput-root:hover fieldset {
+    border-color: #ba68c8;
+    border-width: 2px;
+}
+
+/* form textfield border focused */
+.form .MuiOutlinedInput-root.Mui-focused fieldset {
+    border-color: #ba68c8;
+}

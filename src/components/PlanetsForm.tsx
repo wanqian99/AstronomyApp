@@ -1,7 +1,6 @@
 import { Controller, useForm } from "react-hook-form";
-import { z } from "zod";
+import { undefined, z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-
 import {
 	Button,
 	Card,
@@ -13,6 +12,7 @@ import {
 import { grey } from "@mui/material/colors";
 import { DatePicker, TimePicker } from "@mui/x-date-pickers";
 import moment from "moment";
+import { useEffect } from "react";
 
 const schema = z.object({
 	latitude: z
@@ -51,6 +51,16 @@ const PlanetsForm = ({ submitForm }: Props) => {
 		resolver: zodResolver(schema),
 	});
 
+	// set default date and time values to current value
+	// else the default values are undefined
+	useEffect(() => {
+		reset({
+			from_date: new Date().toString(),
+			to_date: new Date().toString(),
+			time: new Date().toString(),
+		});
+	}, []);
+
 	const checkDateRange = (data: FormData) => {
 		const startDate = Date.parse(data.from_date);
 		const endDate = Date.parse(data.to_date);
@@ -70,9 +80,9 @@ const PlanetsForm = ({ submitForm }: Props) => {
 	};
 
 	const formatTime = (data: FormData) => {
-		console.log(data.time);
+		// console.log(data.time);
 		data.time = moment(data.time).format("HH:mm:ss");
-		console.log(data.time);
+		// console.log(data.time);
 	};
 
 	return (
@@ -80,18 +90,19 @@ const PlanetsForm = ({ submitForm }: Props) => {
 			<Card
 				raised={true}
 				sx={{
-					maxWidth: "90%",
-					margin: "auto",
+					// maxWidth: "90%",
+					// margin: "auto",
+					backgroundColor: "background.default",
 				}}
 			>
 				<CardContent>
 					<Typography
 						// sx={{ fontSize: 16 }}
-						color="text.secondary"
+						color="#ba68c8"
 						variant="subtitle1"
 						gutterBottom
 					>
-						Planet query:
+						Planet Query Form:
 					</Typography>
 					<form
 						onSubmit={handleSubmit((data) => {
@@ -118,14 +129,7 @@ const PlanetsForm = ({ submitForm }: Props) => {
 									})}
 									error={!!errors.latitude}
 									helperText={errors.latitude?.message}
-									sx={{
-										"& .MuiFormLabel-root": {
-											color: grey[400],
-										},
-										"& .MuiFormLabel-root.Mui-focused": {
-											color: "primary.main",
-										},
-									}}
+									className="form"
 								/>
 								<TextField
 									fullWidth
@@ -138,14 +142,7 @@ const PlanetsForm = ({ submitForm }: Props) => {
 									})}
 									error={!!errors.longitude}
 									helperText={errors.longitude?.message}
-									sx={{
-										"& .MuiFormLabel-root": {
-											color: grey[400],
-										},
-										"& .MuiFormLabel-root.Mui-focused": {
-											color: "primary.main",
-										},
-									}}
+									className="form"
 								/>
 							</Stack>
 							<Stack direction={"row"} spacing={1}>
@@ -178,6 +175,7 @@ const PlanetsForm = ({ submitForm }: Props) => {
 													label="Start Date"
 													error={Boolean(error)}
 													helperText={error?.message}
+													className="form"
 												/>
 											)}
 											{...from_date}
@@ -209,6 +207,7 @@ const PlanetsForm = ({ submitForm }: Props) => {
 													label="End Date"
 													error={Boolean(error)}
 													helperText={error?.message}
+													className="form"
 												/>
 											)}
 											{...to_date}
@@ -228,14 +227,7 @@ const PlanetsForm = ({ submitForm }: Props) => {
 									})}
 									error={!!errors.elevation}
 									helperText={errors.elevation?.message}
-									sx={{
-										"& .MuiFormLabel-root": {
-											color: grey[400],
-										},
-										"& .MuiFormLabel-root.Mui-focused": {
-											color: "primary.main",
-										},
-									}}
+									className="form"
 								/>
 								<Controller
 									name="time"
@@ -262,6 +254,7 @@ const PlanetsForm = ({ submitForm }: Props) => {
 													label="Time"
 													error={Boolean(error)}
 													helperText={error?.message}
+													className="form"
 												/>
 											)}
 											{...time}

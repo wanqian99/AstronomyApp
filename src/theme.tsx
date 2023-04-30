@@ -1,13 +1,5 @@
 import { colors } from "@mui/material";
-import {
-	amber,
-	blue,
-	deepOrange,
-	grey,
-	indigo,
-	pink,
-	purple,
-} from "@mui/material/colors";
+import { grey, purple } from "@mui/material/colors";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { ReactNode, createContext, useMemo, useState } from "react";
 
@@ -78,6 +70,20 @@ const ColorModeContextProvider = ({ children }: Props) => {
 	const theme = useMemo(
 		() =>
 			createTheme({
+				components: {
+					// Name of the component
+					// MuiButtonBase: {
+					// 	defaultProps: {
+					// 		// The props to change the default for.
+					// 		disableRipple: true, // No more ripple, on the whole application 💣!
+					// 	},
+					// },
+					// MuiFormLabel: {
+					// 	defaultProps: {
+					// 		// root:
+					// 	},
+					// },
+				},
 				palette: {
 					mode,
 					// primary: {

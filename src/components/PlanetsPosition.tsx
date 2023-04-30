@@ -16,10 +16,12 @@ const PlanetsPosition = ({ observerParams }: Props) => {
 		<>
 			<Box
 				color={"text.secondary"}
-				sx={{
-					maxWidth: "90%",
-					margin: "5px auto",
-				}}
+				sx={
+					{
+						// maxWidth: "90%",
+						// margin: "5px auto",
+					}
+				}
 			>
 				{/* <p>Planets Position:</p> */}
 				{data?.table.rows.map(
