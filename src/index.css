@@ -23,3 +23,51 @@
 .form .MuiOutlinedInput-root.Mui-focused fieldset {
     border-color: #7986cb;
 }
+
+.underlay {
+    position: absolute;
+    z-index: 0;
+    top: 7%;
+    text-transform: uppercase;
+}
+
+.overlay {
+    position: absolute;
+    z-index: 1;
+    top: 32%;
+    right: 9%;
+    text-transform: uppercase;
+    color: white;
+    /* text-shadow: -0.5px -0.5px 0 #fff, 
+                  0.5px -0.5px 0 #fff, 
+                 -0.5px 0.5px 0 #fff, 
+                  0.5px 0.5px 0 #fff; */
+    /* text-shadow: -0.2px -0.2px 0 #1a237e, 
+                  0.2px -0.2px 0 #1a237e, 
+                 -0.2px 0.2px 0 #1a237e, 
+                  0.2px 0.2px 0 #1a237e; */
+    /* text-shadow: -0.5px -0.5px 0 #7986cb, 
+                  0.5px -0.5px 0 #7986cb, 
+                 -0.5px 0.5px 0 #7986cb, 
+                  0.5px 0.5px 0 #7986cb; */
+    text-shadow: 4px 0 2px #1a237e;
+}
+
+
+.textUnderlay {
+    position: absolute;
+    z-index: 0;
+    top: 12%;
+    left: 6%;
+    text-transform: uppercase;
+}
+
+.textOverlay {
+    position: absolute;
+    z-index: 1;
+    bottom: 10%;
+    right: 6%;
+    text-transform: uppercase;
+    color: white;
+    text-shadow: 4px 0 2px #1a237e;
+}

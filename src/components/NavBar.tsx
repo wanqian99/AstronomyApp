@@ -30,10 +30,9 @@ import Button from "@mui/material/Button";
 
 import NightsStayRoundedIcon from "@mui/icons-material/NightsStayRounded";
 import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import LightDarkToggleButton from "./LightDarkToggleButton";
 
-import { grey, purple, blue, indigo } from "@mui/material/colors";
 import { ColorModeContext } from "../theme";
 
 interface Props {

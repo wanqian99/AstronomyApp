@@ -1,10 +1,20 @@
-import { Box, Divider, Grid, Stack, Typography } from "@mui/material";
+import {
+	Box,
+	Card,
+	CardContent,
+	Divider,
+	Grid,
+	ImageListItem,
+	Stack,
+	Typography,
+} from "@mui/material";
 import { useEffect, useState } from "react";
 import { ObserverParams } from "../App";
 import moment from "moment";
 import PlanetsSelector from "./PlanetsSelector";
 import PlanetsForm from "./PlanetsForm";
 import PlanetsPosition from "./PlanetsPosition";
+import PlanetCard from "./PlanetCard";
 
 const Planets = () => {
 	const [observerParams, setObserverParams] = useState<ObserverParams>(
@@ -15,7 +25,8 @@ const Planets = () => {
 		// set default values
 		setObserverParams({
 			...observerParams,
-			planet: "",
+			// planet: "",
+			planet: "sun",
 			latitude: 33.775867,
 			longitude: -84.39733,
 			from_date: moment().format("YYYY-MM-DD"),
@@ -44,6 +55,8 @@ const Planets = () => {
 							marginRight: "auto",
 						}}
 					>
+						{/* Planets Card */}
+						<PlanetCard observerParams={observerParams} />
 						{/* Planets Query Form */}
 						<PlanetsForm
 							submitForm={(newQuery) =>

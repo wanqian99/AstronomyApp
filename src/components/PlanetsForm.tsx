@@ -45,6 +45,7 @@ const PlanetsForm = ({ submitForm }: Props) => {
 		handleSubmit,
 		reset,
 		control,
+		setValue,
 		formState: { errors },
 	} = useForm<FormData>({
 		resolver: zodResolver(schema),
@@ -53,11 +54,9 @@ const PlanetsForm = ({ submitForm }: Props) => {
 	// set default date and time values to current value
 	// else the default values are undefined
 	useEffect(() => {
-		reset({
-			from_date: new Date().toString(),
-			to_date: new Date().toString(),
-			time: new Date().toString(),
-		});
+		setValue("from_date", moment().format("YYYY-MM-DD"));
+		setValue("to_date", moment().format("YYYY-MM-DD"));
+		setValue("time", moment().format("YYYY-MM-DD HH:mm:ss"));
 	}, []);
 
 	const checkDateRange = (data: FormData) => {
@@ -89,8 +88,6 @@ const PlanetsForm = ({ submitForm }: Props) => {
 			<Card
 				raised={true}
 				sx={{
-					// maxWidth: "90%",
-					// margin: "auto",
 					backgroundColor: "background.default",
 				}}
 			>

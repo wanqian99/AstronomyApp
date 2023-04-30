@@ -1,4 +1,4 @@
-import { grey, purple, blue, indigo } from "@mui/material/colors";
+import { grey, indigo } from "@mui/material/colors";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { ReactNode, createContext, useMemo, useState } from "react";
 
@@ -198,7 +198,7 @@ const ColorModeContextProvider = ({ children }: Props) => {
 								},
 								//
 								secondary: {
-									main: indigo[300],
+									main: "#fff",
 								},
 								// divider, drawer moonstar icon,
 								// planet form title, planet form buttons,
