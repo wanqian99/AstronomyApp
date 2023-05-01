@@ -1,6 +1,6 @@
 /* form textfield label unfocused */
 .form .MuiFormLabel-root {
-    color: lightgrey;
+    color: grey;
 }
 
 /* form textfield label focused */

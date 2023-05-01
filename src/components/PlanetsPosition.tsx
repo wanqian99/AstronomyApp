@@ -4,10 +4,8 @@ import usePlanetsPosition from "../hooks/usePlanetsPosition";
 import {
 	Card,
 	CardContent,
-	CardMedia,
 	Divider,
 	Grid,
-	ImageListItem,
 	Stack,
 	Typography,
 } from "@mui/material";
@@ -56,15 +54,6 @@ const PlanetsPosition = ({ observerParams }: Props) => {
 								}}
 							>
 								<CardContent>
-									{/* <Stack
-										direction={"row"}
-										// justifyContent={"space-between"}
-										justifyContent={"flex-end"}
-										alignItems={"center"}
-									> */}
-
-									{/* </Stack> */}
-
 									{/* Planet Name */}
 									<Typography
 										color={
@@ -140,7 +129,6 @@ const PlanetsPosition = ({ observerParams }: Props) => {
 										textTransform="uppercase"
 										textAlign="left"
 										fontWeight={600}
-										// letterSpacing={5}
 										marginTop={"8%"}
 									>
 										Horizonal
@@ -216,7 +204,6 @@ const PlanetsPosition = ({ observerParams }: Props) => {
 										textTransform="uppercase"
 										textAlign="left"
 										fontWeight={600}
-										// letterSpacing={5}
 										marginTop={"8%"}
 									>
 										Equatorial
@@ -277,12 +264,6 @@ const PlanetsPosition = ({ observerParams }: Props) => {
 									</Stack>
 
 									{/* CONSTELLATION */}
-									{/* <Stack
-										// direction={"row"}
-										// justifyContent={"flex-end"}
-										// alignItems={"flex-end"}
-										// margin="auto 0"
-									> */}
 									{/* Constellation Name */}
 									<Typography
 										color={
@@ -307,7 +288,6 @@ const PlanetsPosition = ({ observerParams }: Props) => {
 									>
 										{cell.position.constellation.name}
 									</Typography>
-									{/* </Stack> */}
 
 									{/* Elongation and Magnitude */}
 									{cell.extraInfo.elongation !== null &&
@@ -320,69 +300,45 @@ const PlanetsPosition = ({ observerParams }: Props) => {
 										>
 											{/* Elongation */}
 											<Stack direction={"column"}>
-												<Box
-												// borderColor="divider"
-												// sx={{
-												// 	borderWidth: "2px",
-												// 	borderStyle: "solid",
-												// 	borderRadius: "5px",
-												// }}
+												{/* Elongation Title */}
+												<Typography
+													color="text.primary"
+													variant="subtitle2"
+													fontWeight={400}
+													textTransform="uppercase"
+													textAlign="center"
 												>
-													{/* Elongation Title */}
-													<Typography
-														color="text.primary"
-														variant="subtitle2"
-														fontWeight={400}
-														textTransform="uppercase"
-														textAlign="center"
-													>
-														Elongation
-													</Typography>
-													{/* Elongation */}
-													<Typography
-														color="divider"
-														variant="subtitle1"
-														textAlign="center"
-													>
-														{
-															cell.extraInfo
-																.elongation
-														}
-													</Typography>
-												</Box>
+													Elongation
+												</Typography>
+												{/* Elongation */}
+												<Typography
+													color="divider"
+													variant="subtitle1"
+													textAlign="center"
+												>
+													{cell.extraInfo.elongation}
+												</Typography>
 											</Stack>
 											{/* Magnitude */}
 											<Stack direction={"column"}>
-												<Box
-												// borderColor="divider"
-												// sx={{
-												// 	borderWidth: "2px",
-												// 	borderStyle: "solid",
-												// 	borderRadius: "5px",
-												// }}
+												{/* Magnitude Title */}
+												<Typography
+													color="text.primary"
+													variant="subtitle2"
+													fontWeight={400}
+													textTransform="uppercase"
+													textAlign="center"
 												>
-													{/* Magnitude Title */}
-													<Typography
-														color="text.primary"
-														variant="subtitle2"
-														fontWeight={400}
-														textTransform="uppercase"
-														textAlign="center"
-													>
-														Magnitude
-													</Typography>
-													{/* Magnitude */}
-													<Typography
-														color="divider"
-														variant="subtitle1"
-														textAlign="right"
-													>
-														{
-															cell.extraInfo
-																.magnitude
-														}
-													</Typography>
-												</Box>
+													Magnitude
+												</Typography>
+												{/* Magnitude */}
+												<Typography
+													color="divider"
+													variant="subtitle1"
+													textAlign="right"
+												>
+													{cell.extraInfo.magnitude}
+												</Typography>
 											</Stack>
 										</Stack>
 									) : null}
