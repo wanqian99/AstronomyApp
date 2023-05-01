@@ -4,7 +4,7 @@ import { ObserverParams } from "../App";
 import moment from "moment";
 import PlanetsSelector from "./PlanetsSelector";
 import PlanetsForm from "./PlanetsForm";
-import PlanetsPosition from "./PlanetsPosition";
+import PlanetsPositionCard from "./PlanetsPositionCard";
 import PlanetCard from "./PlanetCard";
 
 import lightBackgroundImage from "../assets/planets/abstract-luxury-gradient-blue-background-smooth-dark-blue-with-black-vignette-studio-banner-copy.jpg";
@@ -39,17 +39,18 @@ const Planets = () => {
 						mode === "dark"
 							? `url(${darkBackgroundImage})`
 							: `url(${lightBackgroundImage})`,
-					backgroundSize: "contain",
-					backgroundRepeat: "repeat-y",
+					backgroundSize: "cover",
+					backgroundRepeat: "no-repeat",
+					backgroundAttachment: "fixed",
 				}}
 			>
 				<Grid
 					container
-					rowSpacing={5}
 					sx={{
 						maxWidth: "96%",
 						justifyContent: "center",
 						margin: "0 auto",
+						paddingY: "3%",
 					}}
 				>
 					<Grid item xs={11} md={4}>
@@ -109,7 +110,9 @@ const Planets = () => {
 							{/* Divider */}
 							<Divider sx={{ margin: "10px auto" }} />
 							{/* Planets Position Cards */}
-							<PlanetsPosition observerParams={observerParams} />
+							<PlanetsPositionCard
+								observerParams={observerParams}
+							/>
 						</Box>
 					</Grid>
 				</Grid>

@@ -75,9 +75,15 @@
     text-shadow: 4px 0 2px #1a237e;
 }
 
+/* solar system overlay text */
 .textOverlay_solar {
     text-transform: uppercase;
     color: white;
     text-shadow: 4px 0 2px #1a237e;
     text-align: center;
+}
+
+/* home pg explore text */
+.introText {
+    text-shadow: 4px 0 2px #7986cb;
 }

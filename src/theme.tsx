@@ -167,10 +167,10 @@ const ColorModeContextProvider = ({ children }: Props) => {
 									// main: purple[900],
 									main: indigo[900],
 								},
-								//
+								// home - explore text
 								secondary: {
 									// main: purple[300],
-									main: "#fff",
+									main: indigo[900],
 								},
 								// divider, drawer moonstar icon,
 								// planet form title, planet form buttons,
@@ -197,7 +197,7 @@ const ColorModeContextProvider = ({ children }: Props) => {
 									// main: purple[300],
 									main: "#000",
 								},
-								//
+								// home - explore text
 								secondary: {
 									main: "#fff",
 								},
