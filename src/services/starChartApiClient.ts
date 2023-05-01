@@ -1,0 +1,14 @@
+import axios from "axios";
+
+const applicationId = "21b092ce-d30d-43d3-9b09-678eb9925ee9";
+const applicationSecret =
+    "117770ae1c20ddd771b2c884ed3a7edfa2c797c74cc3da6e7f8493ac1dbb1bd5a550ed1547ddda41ecba34a46aa3912bd08bfccbbf1f312e1b4f94c19a8c27e4634027e26c8a4fb9374cd5d0ac9e2668f8e4e12b9ea4c7af675b96e6dacdbbf04b1102451db88e7eade9287bb8ae775f";
+
+const authString = btoa(`${applicationId}:${applicationSecret}`);
+
+export default axios.create({
+    baseURL: "https://api.astronomyapi.com/api/v2/studio/star-chart",
+    headers: {
+        Authorization: "Basic " + authString,
+    },
+});

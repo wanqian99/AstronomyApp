@@ -1,6 +1,6 @@
 import { AxiosRequestConfig, CanceledError } from "axios";
 import { useEffect, useState } from "react";
-import apiClient from "../services/api-client";
+import PlanetApiClient from "../services/PlanetApiClient";
 
 interface FetchResponse<T> {
     data: T;
@@ -16,7 +16,7 @@ const useData = <T>(endpoint: string, requestConfig?: AxiosRequestConfig, deps?:
         const controller = new AbortController();
 
         setLoading(true);
-		apiClient
+		PlanetApiClient
 			.get<FetchResponse<T>>(endpoint, { signal: controller.signal, ...requestConfig })
 			.then((res) => {
                 setData(res.data.data);

@@ -2,7 +2,7 @@ import axios, { CanceledError } from "axios";
 import { useState, useEffect } from "react";
 
 
-export interface APOD {
+interface APOD {
 	copyright: string;
 	date: string;
 	explanation: string;
