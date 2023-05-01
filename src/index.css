@@ -24,7 +24,7 @@
     border-color: #7986cb;
 }
 
-.underlay {
+/* .underlay {
     position: absolute;
     z-index: 0;
     top: 7%;
@@ -38,22 +38,24 @@
     right: 9%;
     text-transform: uppercase;
     color: white;
-    /* text-shadow: -0.5px -0.5px 0 #fff, 
+    text-shadow: -0.5px -0.5px 0 #fff, 
                   0.5px -0.5px 0 #fff, 
                  -0.5px 0.5px 0 #fff, 
-                  0.5px 0.5px 0 #fff; */
-    /* text-shadow: -0.2px -0.2px 0 #1a237e, 
+                  0.5px 0.5px 0 #fff;
+    text-shadow: -0.2px -0.2px 0 #1a237e, 
                   0.2px -0.2px 0 #1a237e, 
                  -0.2px 0.2px 0 #1a237e, 
-                  0.2px 0.2px 0 #1a237e; */
-    /* text-shadow: -0.5px -0.5px 0 #7986cb, 
+                  0.2px 0.2px 0 #1a237e;
+    text-shadow: -0.5px -0.5px 0 #7986cb, 
                   0.5px -0.5px 0 #7986cb, 
                  -0.5px 0.5px 0 #7986cb, 
-                  0.5px 0.5px 0 #7986cb; */
+                  0.5px 0.5px 0 #7986cb;
     text-shadow: 4px 0 2px #1a237e;
-}
+} */
 
 
+
+/* planet name underlay text */
 .textUnderlay {
     position: absolute;
     z-index: 0;
@@ -62,6 +64,7 @@
     text-transform: uppercase;
 }
 
+/* planet name overlay text */
 .textOverlay {
     position: absolute;
     z-index: 1;
@@ -70,4 +73,11 @@
     text-transform: uppercase;
     color: white;
     text-shadow: 4px 0 2px #1a237e;
+}
+
+.textOverlay_solar {
+    text-transform: uppercase;
+    color: white;
+    text-shadow: 4px 0 2px #1a237e;
+    text-align: center;
 }

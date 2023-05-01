@@ -5,12 +5,15 @@ import {
 	Card,
 	CardContent,
 	CardMedia,
+	Divider,
 	Grid,
 	ImageListItem,
 	Stack,
 	Typography,
 } from "@mui/material";
 import moment from "moment";
+import { useContext } from "react";
+import { ColorModeContext } from "../theme";
 
 interface Props {
 	observerParams: ObserverParams;
@@ -18,6 +21,7 @@ interface Props {
 
 const PlanetsPosition = ({ observerParams }: Props) => {
 	const { data, error, isLoading } = usePlanetsPosition(observerParams);
+	const { mode } = useContext(ColorModeContext);
 
 	if (error) return <p>{error}</p>;
 	if (isLoading) return <p>Loading Planets Details...</p>;
@@ -47,112 +51,341 @@ const PlanetsPosition = ({ observerParams }: Props) => {
 								sx={{
 									backgroundColor: "background.default",
 									maxWidth: "90%",
-									minHeight: "700px",
+									minHeight: "570px",
 									margin: "0 auto",
 								}}
 							>
-								{/* <CardMedia
-									sx={{
-										width: "300px",
-										height: "300px",
-										backgroundSize: "contain",
-									}}
-									image="../src/assets/planets/sun.png"
-									// title="green iguana"
-								/> */}
-
-								{/* <Box
-									component="img"
-									sx={{
-										height: 233,
-										width: 350,
-										maxHeight: { xs: 233, md: 167 },
-										maxWidth: { xs: 350, md: 250 },
-									}}
-									alt="The house from the offer."
-									src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&w=350&dpr=2"
-								/> */}
-								{/* <Box
-									component="img"
-									sx={{
-										width: "100%",
-										height: "100%",
-										backgroundImage: `url(../src/assets/planets/sun.png)`,
-										backgroundSize: "cover",
-										// backgroundRepeat: "no-repeat",
-									}}
-									// alt="Sun planet image"
-									alt={cell.name}
-									// src="../src/assets/planets/${cell.id}.png"
-								></Box> */}
-
 								<CardContent>
-									<Stack
+									{/* <Stack
 										direction={"row"}
 										// justifyContent={"space-between"}
 										justifyContent={"flex-end"}
 										alignItems={"center"}
-									>
-										{/* Planet Name */}
-										{/* <Typography
-											gutterBottom
-											color="divider"
-											variant="h6"
-											className="underlay"
-										>
-											{cell.name}
-										</Typography> */}
-										{/* Query Date */}
-										<Typography
-											gutterBottom
-											color="text.primary"
-											variant="subtitle1"
-										>
-											{moment(cell.date).format(
-												"Do MMM YYYY"
-											)}
-										</Typography>
-									</Stack>
-									{/* <Typography
-										gutterBottom
-										color="divider"
-										variant="h6"
-										className="overlay"
-									>
-										OVERLAY
-									</Typography> */}
+									> */}
 
-									{/* <Typography
-										gutterBottom
-										color="divider"
-										variant="h3"
-										className="underlay"
-									>
-										The
-									</Typography>
+									{/* </Stack> */}
 
-									<ImageListItem
-										sx={{
-											width: "100%",
-											height: "auto",
-											margin: "0 auto",
-										}}
-									>
-										<img
-											src={`../src/assets/planets/${cell.id}.png`}
-											alt={`${cell.name} planet image`}
-											loading="lazy"
-										/>
-									</ImageListItem>
-
+									{/* Planet Name */}
 									<Typography
-										gutterBottom
-										// color="divider"
+										color={
+											mode == "light"
+												? "goldenrod"
+												: "khaki"
+										}
 										variant="h3"
-										className="overlay"
+										textAlign="center"
+										fontFamily="cursive"
 									>
 										{cell.name}
-									</Typography> */}
+									</Typography>
+
+									{/* Query Date */}
+									<Typography
+										gutterBottom
+										color="text.primary"
+										variant="h6"
+										textAlign="center"
+										marginBottom="15%"
+									>
+										{moment(cell.date).format(
+											"Do MMM YYYY"
+										)}
+									</Typography>
+
+									{/* DISTANCE */}
+									<Stack
+										direction={"row"}
+										justifyContent={"space-between"}
+										alignItems={"center"}
+									>
+										{/* Distance Title */}
+										<Typography
+											color="divider"
+											variant="h5"
+											// fontFamily="cursive"
+											// fontFamily="fantasy"
+											// fontFamily="Roboto"
+											// fontFamily="sans-serif"
+											// fontFamily="serif"
+											// fontStyle="italic"
+											fontWeight={600}
+											textTransform="uppercase"
+										>
+											Distance
+										</Typography>
+
+										<Typography
+											color="divider"
+											variant="subtitle2"
+											letterSpacing={-1}
+											textTransform="uppercase"
+										>
+											From Earth
+										</Typography>
+									</Stack>
+									<Divider />
+									<Typography
+										color="text.primary"
+										variant="subtitle1"
+										fontStyle="italic"
+									>
+										{cell.distance.fromEarth.km} KM
+									</Typography>
+
+									{/* HORIZONAL */}
+									{/* Horizonal Title */}
+									<Typography
+										color="divider"
+										variant="subtitle1"
+										textTransform="uppercase"
+										textAlign="left"
+										fontWeight={600}
+										// letterSpacing={5}
+										marginTop={"8%"}
+									>
+										Horizonal
+									</Typography>
+									<Divider />
+									{/* HORIZONAL - Altitude, Azimuth */}
+									<Stack
+										direction={"row"}
+										justifyContent={"space-between"}
+										alignItems={"center"}
+									>
+										<Stack direction={"column"}>
+											{/* Altitude Title */}
+											<Typography
+												color={
+													mode == "light"
+														? "goldenrod"
+														: "khaki"
+												}
+												variant="h6"
+												fontWeight={400}
+												textTransform="uppercase"
+											>
+												Altitude
+											</Typography>
+											{/* Altitude Degree */}
+											<Typography
+												color="text.primary"
+												variant="subtitle2"
+												textAlign="left"
+											>
+												{
+													cell.position.horizontal
+														.altitude.degrees
+												}
+												&deg;
+											</Typography>
+										</Stack>
+										<Stack direction={"column"}>
+											{/* Azimuth Title */}
+											<Typography
+												color={
+													mode == "light"
+														? "goldenrod"
+														: "khaki"
+												}
+												variant="h6"
+												fontWeight={400}
+												textTransform="uppercase"
+											>
+												Azimuth
+											</Typography>
+											{/* Azimuth Degree */}
+											<Typography
+												color="text.primary"
+												variant="subtitle2"
+												textAlign="right"
+											>
+												{
+													cell.position.horizontal
+														.azimuth.degrees
+												}
+												&deg;
+											</Typography>
+										</Stack>
+									</Stack>
+
+									{/* EQUATORIAL */}
+									{/* Equatorial Title */}
+									<Typography
+										color="divider"
+										variant="subtitle1"
+										textTransform="uppercase"
+										textAlign="left"
+										fontWeight={600}
+										// letterSpacing={5}
+										marginTop={"8%"}
+									>
+										Equatorial
+									</Typography>
+									<Divider />
+									{/* EQUATORIAL - RightAscension, Declination */}
+									<Stack
+										direction={"row"}
+										justifyContent={"space-between"}
+										alignItems={"flex-end"}
+									>
+										{/* Right Ascension Title */}
+										<Typography
+											color="text.primary"
+											variant="subtitle2"
+											fontWeight={600}
+											textTransform="uppercase"
+										>
+											Right Ascension:
+										</Typography>
+										{/* Right Ascension Degree */}
+										<Typography
+											color="divider"
+											variant="subtitle2"
+										>
+											{
+												cell.position.equatorial
+													.rightAscension.hours
+											}{" "}
+											Hours
+										</Typography>
+									</Stack>
+									<Stack
+										direction={"row"}
+										justifyContent={"space-between"}
+										alignItems={"flex-end"}
+									>
+										{/* Declination Title */}
+										<Typography
+											color="text.primary"
+											variant="subtitle2"
+											fontWeight={600}
+											textTransform="uppercase"
+										>
+											Declination:
+										</Typography>
+										{/* Declination Degree */}
+										<Typography
+											color="divider"
+											variant="subtitle2"
+										>
+											{
+												cell.position.equatorial
+													.declination.degrees
+											}
+											&deg;
+										</Typography>
+									</Stack>
+
+									{/* CONSTELLATION */}
+									{/* <Stack
+										// direction={"row"}
+										// justifyContent={"flex-end"}
+										// alignItems={"flex-end"}
+										// margin="auto 0"
+									> */}
+									{/* Constellation Name */}
+									<Typography
+										color={
+											mode == "light"
+												? "goldenrod"
+												: "khaki"
+										}
+										variant="subtitle1"
+										textAlign="center"
+										marginTop={"8%"}
+									>
+										Constellation
+									</Typography>
+									{/* Constellation Name */}
+									<Typography
+										color="divider"
+										variant="h5"
+										letterSpacing={5}
+										fontWeight={600}
+										textTransform="uppercase"
+										textAlign="center"
+									>
+										{cell.position.constellation.name}
+									</Typography>
+									{/* </Stack> */}
+
+									{/* Elongation and Magnitude */}
+									{cell.extraInfo.elongation !== null &&
+									cell.extraInfo.magnitude !== null ? (
+										<Stack
+											direction={"row"}
+											justifyContent={"space-between"}
+											alignItems={"flex-end"}
+											marginTop="8%"
+										>
+											{/* Elongation */}
+											<Stack direction={"column"}>
+												<Box
+												// borderColor="divider"
+												// sx={{
+												// 	borderWidth: "2px",
+												// 	borderStyle: "solid",
+												// 	borderRadius: "5px",
+												// }}
+												>
+													{/* Elongation Title */}
+													<Typography
+														color="text.primary"
+														variant="subtitle2"
+														fontWeight={400}
+														textTransform="uppercase"
+														textAlign="center"
+													>
+														Elongation
+													</Typography>
+													{/* Elongation */}
+													<Typography
+														color="divider"
+														variant="subtitle1"
+														textAlign="center"
+													>
+														{
+															cell.extraInfo
+																.elongation
+														}
+													</Typography>
+												</Box>
+											</Stack>
+											{/* Magnitude */}
+											<Stack direction={"column"}>
+												<Box
+												// borderColor="divider"
+												// sx={{
+												// 	borderWidth: "2px",
+												// 	borderStyle: "solid",
+												// 	borderRadius: "5px",
+												// }}
+												>
+													{/* Magnitude Title */}
+													<Typography
+														color="text.primary"
+														variant="subtitle2"
+														fontWeight={400}
+														textTransform="uppercase"
+														textAlign="center"
+													>
+														Magnitude
+													</Typography>
+													{/* Magnitude */}
+													<Typography
+														color="divider"
+														variant="subtitle1"
+														textAlign="right"
+													>
+														{
+															cell.extraInfo
+																.magnitude
+														}
+													</Typography>
+												</Box>
+											</Stack>
+										</Stack>
+									) : null}
 								</CardContent>
 
 								<div key={cell.id + cell.date}>
@@ -166,18 +399,16 @@ const PlanetsPosition = ({ observerParams }: Props) => {
 										<b>id:</b> {cell.id} <b>name:</b>{" "}
 										{cell.name}
 									</div> */}
-									<div>
+									{/* <div>
 										<b>Distance from earth(au): </b>
 										{cell.distance.fromEarth.au}
-									</div>
-									<div>
+									</div> */}
+									{/* <div>
 										<b>Distance from earth(km): </b>
 										{cell.distance.fromEarth.km}
-									</div>
-									<div>
-										<b>
-											Horizontal altitude (altitude) ||{" "}
-										</b>
+									</div> */}
+									{/* <div>
+										<b>Horizonal altitude || </b>
 										Degrees:{" "}
 										{
 											cell.position.horizontal.altitude
@@ -188,9 +419,9 @@ const PlanetsPosition = ({ observerParams }: Props) => {
 											cell.position.horizontal.altitude
 												.string
 										}
-									</div>
-									<div>
-										<b>Horizontal altitude (azimuth) || </b>
+									</div> */}
+									{/* <div>
+										<b>Horizonal azimuth || </b>
 										Degrees:{" "}
 										{
 											cell.position.horizontal.azimuth
@@ -201,8 +432,8 @@ const PlanetsPosition = ({ observerParams }: Props) => {
 											cell.position.horizontal.azimuth
 												.string
 										}
-									</div>
-									<div>
+									</div> */}
+									{/* <div>
 										<b>Equatorial RightAscension || </b>
 										Hours:{" "}
 										{
@@ -214,8 +445,8 @@ const PlanetsPosition = ({ observerParams }: Props) => {
 											cell.position.equatorial
 												.rightAscension.string
 										}
-									</div>
-									<div>
+									</div> */}
+									{/* <div>
 										<b>Equatorial Declination || </b>
 										Degrees:{" "}
 										{
@@ -227,20 +458,20 @@ const PlanetsPosition = ({ observerParams }: Props) => {
 											cell.position.equatorial.declination
 												.string
 										}
-									</div>
-									<div>
+									</div> */}
+									{/* <div>
 										<b>Constellation || </b> id:{" "}
 										{cell.position.constellation.id} short:{" "}
 										{cell.position.constellation.short}{" "}
 										name: {cell.position.constellation.name}
-									</div>
-									<div>
+									</div> */}
+									{/* <div>
 										<b>Extra Info || </b>
 										Elongation : {
 											cell.extraInfo.elongation
 										}{" "}
 										Magnitude : {cell.extraInfo.magnitude}
-									</div>
+									</div> */}
 								</div>
 							</Card>
 						</Grid>

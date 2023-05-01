@@ -175,6 +175,7 @@ const ColorModeContextProvider = ({ children }: Props) => {
 								// divider, drawer moonstar icon,
 								// planet form title, planet form buttons,
 								// planet position title
+								// planet card title texts
 								divider: indigo[900],
 								//content, form button text
 								background: {
@@ -203,6 +204,7 @@ const ColorModeContextProvider = ({ children }: Props) => {
 								// divider, drawer moonstar icon,
 								// planet form title, planet form buttons,
 								// planet position title
+								// planet card title texts
 								divider: indigo[300],
 								//content, form button text
 								background: {
@@ -223,8 +225,8 @@ const ColorModeContextProvider = ({ children }: Props) => {
 					// 	fontFamily: "monospace",
 					// 	color: purple[300],
 					// },
-					// fontFamily: "monospace",
-					fontFamily: "Roboto",
+					fontFamily: "monospace",
+					// fontFamily: "Roboto",
 				},
 			}),
 		[mode]

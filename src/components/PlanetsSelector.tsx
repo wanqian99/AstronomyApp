@@ -36,7 +36,11 @@ const PlanetsSelector = ({ onSelectPlanet }: Props) => {
 				</button>
 			))} */}
 
-			<FormControl sx={{ minWidth: 120 }} color="primary">
+			<FormControl
+				sx={{ minWidth: 120 }}
+				color="primary"
+				className="form"
+			>
 				<InputLabel id="planetFilter">Planet</InputLabel>
 				<Select
 					labelId="planetFilter"

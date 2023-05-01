@@ -25,8 +25,7 @@ const Planets = () => {
 		// set default values
 		setObserverParams({
 			...observerParams,
-			// planet: "",
-			planet: "sun",
+			planet: "",
 			latitude: 33.775867,
 			longitude: -84.39733,
 			from_date: moment().format("YYYY-MM-DD"),
