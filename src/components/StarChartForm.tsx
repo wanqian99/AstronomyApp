@@ -89,7 +89,6 @@ const StarChartForm = ({ submitForm }: Props) => {
 		reset,
 		control,
 		setValue,
-		getValues,
 		formState: { errors },
 	} = useForm<FormData>({
 		resolver: zodResolver(schema),

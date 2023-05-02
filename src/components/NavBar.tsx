@@ -46,7 +46,7 @@ const NavBar = (props: Props) => {
 	const [selectedIndex, setSelectedIndex] = useState(1);
 
 	const handleListItemClick = (
-		event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+		// event: React.MouseEvent<HTMLDivElement, MouseEvent>,
 		index: number
 	) => {
 		setSelectedIndex(index);
@@ -75,7 +75,7 @@ const NavBar = (props: Props) => {
 						<ListItemButton
 							sx={{ textAlign: "center" }}
 							selected={selectedIndex === 0}
-							onClick={(event) => handleListItemClick(event, 0)}
+							onClick={() => handleListItemClick(0)}
 						>
 							<ListItemText
 								primary={"Home"}
@@ -100,9 +100,7 @@ const NavBar = (props: Props) => {
 									textAlign: "center",
 								}}
 								selected={selectedIndex === index + 1}
-								onClick={(event) =>
-									handleListItemClick(event, index + 1)
-								}
+								onClick={() => handleListItemClick(index + 1)}
 							>
 								<ListItemText
 									primary={item}
