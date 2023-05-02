@@ -89,6 +89,7 @@ const PlanetsForm = ({ submitForm }: Props) => {
 				raised={true}
 				sx={{
 					backgroundColor: "background.default",
+					marginBottom: "10%",
 				}}
 			>
 				<CardContent>

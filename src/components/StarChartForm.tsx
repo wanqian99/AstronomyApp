@@ -9,12 +9,11 @@ import {
 	TextField,
 	Typography,
 } from "@mui/material";
-import { DatePicker, TimePicker } from "@mui/x-date-pickers";
+import { DatePicker } from "@mui/x-date-pickers";
 import moment from "moment";
 import { useEffect } from "react";
 import StarChartFormSelector_Constellation from "./StarChartFormSelector_Constellation";
 import StarChartFormSelector_Style from "./StarChartFormSelector_Style";
-import useStarChart from "../hooks/useStarChart";
 
 const observerObject = z.object({
 	latitude: z
@@ -96,7 +95,7 @@ const StarChartForm = ({ submitForm }: Props) => {
 		resolver: zodResolver(schema),
 	});
 
-	// set default date and time values to current value
+	// set default date, style and constellation values
 	// else the default values are undefined
 	useEffect(() => {
 		setValue("observer.date", moment().format("YYYY-MM-DD"));
@@ -111,6 +110,7 @@ const StarChartForm = ({ submitForm }: Props) => {
 				raised={true}
 				sx={{
 					backgroundColor: "background.default",
+					marginBottom: "10%",
 				}}
 			>
 				<CardContent>
@@ -241,7 +241,6 @@ const StarChartForm = ({ submitForm }: Props) => {
 									color: "background.default",
 									backgroundColor: "divider",
 								}}
-								onClick={() => getValues("observer.date")}
 							>
 								Submit
 							</Button>

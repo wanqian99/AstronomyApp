@@ -8,7 +8,7 @@ import {
 	MenuItem,
 } from "@mui/material";
 
-const constellations = {
+export const constellations = {
 	and: "Andromeda",
 	ant: "Antlia",
 	aps: "Apus",

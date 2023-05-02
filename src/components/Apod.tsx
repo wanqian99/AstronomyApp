@@ -9,6 +9,7 @@ import {
 	ImageListItem,
 } from "@mui/material";
 import useAPOD from "../hooks/useAPOD";
+import moment from "moment";
 
 const Apod = () => {
 	const { data, error, isLoading } = useAPOD();
@@ -51,7 +52,7 @@ const Apod = () => {
 								color="text.primary"
 								variant="subtitle1"
 							>
-								{data?.date}
+								{moment(data?.date).format("Do MMM YYYY")}
 							</Typography>
 						</Stack>
 

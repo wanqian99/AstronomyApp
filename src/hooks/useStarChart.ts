@@ -16,7 +16,7 @@ interface viewParams {
 }
 
 export interface StarChartParams {
-	style: string;
+	style: string
     observer: observerParams_starChart
 	view: viewParams
 }
@@ -25,19 +25,28 @@ interface StarChartImage {
     imageUrl: string
 }
 
+interface QueryParams {
+    date: string
+    constellationKey: string
+    // constellationValue: string
+}
+
 const useStarChart = (starChartParams: StarChartParams) => {
     const [data, setData] = useState<StarChartImage>();
 	const [error, setError] = useState("");
 	const [isLoading, setLoading] = useState(false);
+    const [params, setParams] = useState<QueryParams>();
 
 	useEffect(() => {
 		const controller = new AbortController();
+        setLoading(true);
 
 		starChartApiClient
 			.post("", starChartParams, { signal: controller.signal })
 			.then((res) => {
 				setData(res.data.data);
 				setLoading(false);
+                setParams({date: starChartParams.observer.date, constellationKey: starChartParams.view.parameters.constellation})
 			})
 			.catch((err) => {
 				if (err instanceof CanceledError) return;
@@ -49,7 +58,7 @@ const useStarChart = (starChartParams: StarChartParams) => {
 		return () => controller.abort();
 	}, [starChartParams]);
 
-    return { data, error, isLoading };
+    return { data, error, isLoading, params };
 }
 
 export default useStarChart;
