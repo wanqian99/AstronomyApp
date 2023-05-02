@@ -1,17 +1,17 @@
 import { Card, CardContent, ImageListItem, Typography } from "@mui/material";
 import { ObserverParams } from "../App";
 import solarSystem from "../assets/planets/solarSystem.png";
-import sun from "../assets/planets/sun.png";
-import moon from "../assets/planets/moon.png";
-import mercury from "../assets/planets/mercury.png";
-import venus from "../assets/planets/venus.png";
-import earth from "../assets/planets/earth.png";
-import mars from "../assets/planets/sumarsn.png";
-import jupiter from "../assets/planets/jupiter.png";
-import saturn from "../assets/planets/saturn.png";
-import uranus from "../assets/planets/uranus.png";
-import neptune from "../assets/planets/neptune.png";
-import pluto from "../assets/planets/pluto.png";
+// import sun from "../assets/planets/sun.png";
+// import moon from "../assets/planets/moon.png";
+// import mercury from "../assets/planets/mercury.png";
+// import venus from "../assets/planets/venus.png";
+// import earth from "../assets/planets/earth.png";
+// import mars from "../assets/planets/sumarsn.png";
+// import jupiter from "../assets/planets/jupiter.png";
+// import saturn from "../assets/planets/saturn.png";
+// import uranus from "../assets/planets/uranus.png";
+// import neptune from "../assets/planets/neptune.png";
+// import pluto from "../assets/planets/pluto.png";
 
 interface Props {
 	observerParams: ObserverParams;
