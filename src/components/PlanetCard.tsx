@@ -102,7 +102,7 @@ const PlanetCard = ({ observerParams }: Props) => {
 								}}
 							>
 								<img
-									src={`${observerParams.planet}`}
+									src={`/static/planets/${observerParams.planet}.png`}
 									alt={`${observerParams.planet} planet image`}
 									loading="lazy"
 								/>
