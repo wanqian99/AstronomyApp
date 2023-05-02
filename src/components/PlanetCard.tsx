@@ -1,5 +1,6 @@
 import { Card, CardContent, ImageListItem, Typography } from "@mui/material";
 import { ObserverParams } from "../App";
+import solarSystem from "../assets/planets/solarSystem.png";
 
 interface Props {
 	observerParams: ObserverParams;
@@ -42,7 +43,7 @@ const PlanetCard = ({ observerParams }: Props) => {
 								}}
 							>
 								<img
-									src={`/public/static/planets/solarSystem.png`}
+									src={solarSystem}
 									alt={`Solar System planets image`}
 									loading="lazy"
 								/>
