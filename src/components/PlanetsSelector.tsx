@@ -46,12 +46,6 @@ const PlanetsSelector = ({ onSelectPlanet }: Props) => {
 
 	return (
 		<>
-			{/* {data?.bodies.map((planet) => (
-				<button onClick={() => onSelectPlanet(planet)} key={planet}>
-					{planet}
-				</button>
-			))} */}
-
 			<FormControl
 				sx={{ minWidth: 120 }}
 				color="primary"

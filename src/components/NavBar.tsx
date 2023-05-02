@@ -43,7 +43,7 @@ const NavBar = (props: Props) => {
 		setMobileOpen((prevState) => !prevState);
 	};
 
-	const [selectedIndex, setSelectedIndex] = useState(1);
+	const [selectedIndex, setSelectedIndex] = useState(0);
 
 	const handleListItemClick = (
 		// event: React.MouseEvent<HTMLDivElement, MouseEvent>,
