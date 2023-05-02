@@ -9,26 +9,10 @@ interface Props {
 	onSelectPlanet: (planet: string) => void;
 }
 
-const data = {
-	bodies: [
-		"sun",
-		"moon",
-		"mercury",
-		"venus",
-		"earth",
-		"mars",
-		"jupiter",
-		"saturn",
-		"uranus",
-		"neptune",
-		"pluto",
-	],
-};
-
 const PlanetsSelector = ({ onSelectPlanet }: Props) => {
-	const { error, isLoading } = usePlanets();
+	const { data, error, isLoading } = usePlanets();
 	const [planet, setPlanet] = useState("All");
-	console.log(data);
+
 	if (error) return <p>{error}</p>;
 	if (isLoading) return <p>Loading Planets...</p>;
 

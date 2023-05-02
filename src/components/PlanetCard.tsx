@@ -42,7 +42,7 @@ const PlanetCard = ({ observerParams }: Props) => {
 								}}
 							>
 								<img
-									src={`../src/assets/planets/solarSystem.png`}
+									src={`/src/assets/planets/solarSystem.png`}
 									alt={`Solar System planets image`}
 									loading="lazy"
 								/>
