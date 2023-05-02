@@ -8,7 +8,6 @@ const Intro = () => {
 					maxWidth: { md: "98%", xs: "100%" },
 					marginLeft: "0",
 					marginRight: "auto",
-					marginTop: "20%",
 					marginBottom: "10%",
 				}}
 			>

@@ -1,6 +1,6 @@
 import axios, { CanceledError } from "axios";
-import { useState, useEffect } from "react";
-import starChartApiClient from "../services/starChartApiClient";
+import { useState, useEffect } from "react"
+import ApiClient from "../services/ApiClient";
 
 interface observerParams_starChart {
     latitude: number,
@@ -41,8 +41,8 @@ const useStarChart = (starChartParams: StarChartParams) => {
 		const controller = new AbortController();
         setLoading(true);
 
-		starChartApiClient
-			.post("", starChartParams, { signal: controller.signal })
+		ApiClient
+			.post("/studio/star-chart", starChartParams, { signal: controller.signal })
 			.then((res) => {
 				setData(res.data.data);
 				setLoading(false);

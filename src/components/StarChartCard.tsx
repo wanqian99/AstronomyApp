@@ -1,4 +1,3 @@
-import React from "react";
 import useStarChart, { StarChartParams } from "../hooks/useStarChart";
 import { Card, CardContent, CardMedia, Stack, Typography } from "@mui/material";
 import { constellations } from "./StarChartFormSelector_Constellation";
@@ -11,34 +10,13 @@ interface Props {
 const StarChartCard = ({ starChartParams }: Props) => {
 	const { data, error, isLoading, params } = useStarChart(starChartParams);
 
-	// var constellationKey: string;
 	var constellationValue;
-	// var constellationDate;
-
-	// // if starChartParams is not empty
-	// if (Object.keys(starChartParams).length !== 0) {
-	// 	constellationKey = starChartParams.view.parameters.constellation;
-	// 	constellationDate = starChartParams.observer.date;
-
-	// 	Object.entries(constellations).map(([key, value]) => {
-	// 		if (key === constellationKey) {
-	// 			constellationValue = value;
-	// 		}
-	// 	});
-	// }
-
-	// if (starChartParams.view !== undefined) {
-	// 	constellationKey = starChartParams.view.parameters.constellation;
-	// 	constellationDate = starChartParams.observer.date;
 
 	Object.entries(constellations).map(([key, value]) => {
 		if (key === params?.constellationKey) {
 			constellationValue = value;
 		}
 	});
-	// }
-	console.log(params?.date);
-	console.log(params?.constellationKey);
 
 	if (error) return <p>{error}</p>;
 	if (isLoading) return <p>Loading Star Chart...</p>;
@@ -53,48 +31,28 @@ const StarChartCard = ({ starChartParams }: Props) => {
 					}}
 				>
 					<CardContent>
-						<Stack direction="row" justifyContent="space-between">
+						<Stack
+							direction="row"
+							justifyContent="space-between"
+							alignItems="center"
+						>
 							<Typography
 								// sx={{ fontSize: 16 }}
-								gutterBottom
-								color="divider"
-								variant="subtitle1"
-								sx={{ ml: 1, mt: 1, mb: 3 }}
+								color="text.primary"
+								variant="h5"
+								sx={{ ml: 1, mt: 1, mb: 2 }}
 							>
-								{/* Star Chart: {constellationValue} [
-								{constellationKey}] */}
-								Star Chart:{" "}
-								{/* {starChartParams.view !== undefined
-									? Object.entries(constellations).map(
-											([key, value]) =>
-												key ===
-												starChartParams.view.parameters
-													.constellation
-									  )
-									: "null"}
-								[
-								{starChartParams.view !== undefined
-									? starChartParams.view.parameters
-											.constellation
-									: "null"}
-								] */}
-								{/* {constellationKey !== undefined
-									? constellationKey
-									: "null"} */}
-								{constellationValue}[{params?.constellationKey}]
+								Star Chart: {constellationValue}[
+								{params?.constellationKey}]
 							</Typography>
 
 							<Typography
 								// sx={{ fontSize: 16 }}
-								gutterBottom
 								color="divider"
 								variant="subtitle1"
-								sx={{ ml: 1, mt: 1, mb: 3 }}
+								sx={{ ml: 1, mt: 1, mb: 2 }}
 							>
-								{/* {moment(constellationDate).format(
-									"Do MMM YYYY"
-								)} */}
-								{params?.date}
+								{moment(params?.date).format("Do MMM YYYY")}
 							</Typography>
 						</Stack>
 						<CardMedia

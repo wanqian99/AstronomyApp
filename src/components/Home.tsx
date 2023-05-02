@@ -12,36 +12,26 @@ const Home = () => {
 
 	return (
 		<>
-			<div
-				style={{
-					backgroundImage:
-						mode === "dark"
-							? `url(${darkBackgroundImage})`
-							: `url(${lightBackgroundImage})`,
-					backgroundSize: "cover",
-					backgroundRepeat: "no-repeat",
-					backgroundAttachment: "fixed",
+			<Grid
+				container
+				sx={{
+					maxWidth: "96%",
+					justifyContent: "center",
+					margin: "0 auto",
+					paddingY: "3%",
+					alignContent: "center",
+					alignItems: "center",
 				}}
 			>
-				<Grid
-					container
-					sx={{
-						maxWidth: "96%",
-						justifyContent: "center",
-						margin: "0 auto",
-						paddingY: "3%",
-					}}
-				>
-					{/* Intro Text */}
-					<Grid item xs={11} md={4}>
-						<Intro />
-					</Grid>
-					{/* Astronomy Picture of the Day */}
-					<Grid item xs={11} md={8}>
-						<Apod />
-					</Grid>
+				{/* Intro Text */}
+				<Grid item xs={11} md={4}>
+					<Intro />
 				</Grid>
-			</div>
+				{/* Astronomy Picture of the Day */}
+				<Grid item xs={11} md={8}>
+					<Apod />
+				</Grid>
+			</Grid>
 		</>
 	);
 };

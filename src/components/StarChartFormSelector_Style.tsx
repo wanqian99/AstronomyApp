@@ -20,6 +20,7 @@ const StarChartFormSelector_Style = ({ onSelectStyle }: Props) => {
 		// parse selected style back to parent component
 		onSelectStyle(event.target.value);
 	};
+
 	return (
 		<>
 			<FormControl sx={{ width: "50%" }} color="primary" className="form">

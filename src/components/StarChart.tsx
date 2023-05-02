@@ -52,73 +52,59 @@ const StarChart = () => {
 
 	return (
 		<>
-			<div
-				style={{
-					backgroundImage:
-						mode === "dark"
-							? `url(${darkBackgroundImage})`
-							: `url(${lightBackgroundImage})`,
-					backgroundSize: "cover",
-					backgroundRepeat: "no-repeat",
-					backgroundAttachment: "fixed",
+			<Grid
+				container
+				sx={{
+					maxWidth: "96%",
+					justifyContent: "center",
+					margin: "0 auto",
+					paddingY: "3%",
 				}}
 			>
-				<Grid
-					container
-					sx={{
-						maxWidth: "96%",
-						justifyContent: "center",
-						margin: "0 auto",
-						paddingY: "3%",
-					}}
-				>
-					<Grid item xs={11} md={4}>
-						<Box
-							sx={{
-								maxWidth: { md: "98%", xs: "100%" },
-								marginLeft: "0",
-								marginRight: "auto",
-							}}
-						>
-							<StarChartForm
-								submitForm={(newQuery) =>
-									setStarChartParams({
-										style: newQuery.style,
-										observer: {
-											latitude:
-												newQuery.observer.latitude,
-											longitude:
-												newQuery.observer.longitude,
-											date: newQuery.observer.date,
+				<Grid item xs={11} md={4}>
+					<Box
+						sx={{
+							maxWidth: { md: "98%", xs: "100%" },
+							marginLeft: "0",
+							marginRight: "auto",
+						}}
+					>
+						<StarChartForm
+							submitForm={(newQuery) =>
+								setStarChartParams({
+									style: newQuery.style,
+									observer: {
+										latitude: newQuery.observer.latitude,
+										longitude: newQuery.observer.longitude,
+										date: newQuery.observer.date,
+									},
+									view: {
+										// type: newQuery.view.type,
+										type: "constellation",
+										parameters: {
+											constellation:
+												newQuery.view.parameters
+													.constellation,
 										},
-										view: {
-											// type: newQuery.view.type,
-											type: "constellation",
-											parameters: {
-												constellation:
-													newQuery.view.parameters
-														.constellation,
-											},
-										},
-									})
-								}
-							/>
-						</Box>
-					</Grid>
-
-					<Grid item xs={11} md={8}>
-						<Box
-							sx={{
-								maxWidth: { md: "98%", xs: "100%" },
-								marginLeft: "auto",
-								marginRight: "0",
-							}}
-						>
-							<StarChartCard starChartParams={starChartParams} />
-						</Box>
-					</Grid>
+									},
+								})
+							}
+						/>
+					</Box>
 				</Grid>
-			</div>
+
+				<Grid item xs={11} md={8}>
+					<Box
+						sx={{
+							maxWidth: { md: "98%", xs: "100%" },
+							marginLeft: "auto",
+							marginRight: "0",
+						}}
+					>
+						<StarChartCard starChartParams={starChartParams} />
+					</Box>
+				</Grid>
+			</Grid>
 		</>
 	);
 };

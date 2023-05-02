@@ -12,8 +12,19 @@ import {
 import { DatePicker } from "@mui/x-date-pickers";
 import moment from "moment";
 import { useEffect } from "react";
-import StarChartFormSelector_Constellation from "./StarChartFormSelector_Constellation";
-import StarChartFormSelector_Style from "./StarChartFormSelector_Style";
+import MoonPhaseFormSelector_ViewType from "./MoonPhaseFormSelector_ViewType";
+import MoonPhaseFormSelector_MoonStyle from "./MoonPhaseFormSelector_MoonStyle";
+import MoonPhaseFormSelector_BackgroundStyle from "./MoonPhaseFormSelector_BackgroundStyle";
+
+const styleObject = z.object({
+	moonStyle: z.string({ invalid_type_error: "Moon Style is required" }),
+	backgroundStyle: z.string({
+		invalid_type_error: "Background Style is required",
+	}),
+	// backgroundColor: z.string({ invalid_type_error: "Background Color is required" }),
+	// headingColor: z.string({ invalid_type_error: "Heading Color is required" }),
+	// textColor: z.string({ invalid_type_error: "Text Color is required" }),
+});
 
 const observerObject = z.object({
 	latitude: z
@@ -27,54 +38,15 @@ const observerObject = z.object({
 	date: z.string({ invalid_type_error: "Date is required" }),
 });
 
-const parametersObject = z.object({
-	constellation: z.string({
-		invalid_type_error: "Constellation is required",
-	}),
-});
-
 const viewObject = z.object({
-	// type: z.string({ invalid_type_error: "Type is required" }),
-	parameters: parametersObject,
+	type: z.string({ invalid_type_error: "Type is required" }),
 });
 
 const schema = z.object({
-	style: z.string({ invalid_type_error: "Style is required" }),
+	style: styleObject,
 	observer: observerObject,
 	view: viewObject,
-
-	// latitude: z
-	// 	.number({ invalid_type_error: "Latitude is required" })
-	// 	.min(-90, { message: "Latitude should be more than -90" })
-	// 	.max(90, { message: "Latitude should be less than 90" }),
-	// longitude: z
-	// 	.number({ invalid_type_error: "Longitude is required" })
-	// 	.min(-180, { message: "Longitude should be more than -180" })
-	// 	.max(180, { message: "Longitude should be less than 180" }),
-	// date: z.string({ invalid_type_error: "Date is required" }),
-	// style: z.string({ invalid_type_error: "Style is required" }),
-	// // type: z.string({ invalid_type_error: "Type is required" }),
-	// constellation: z.string({
-	// 	invalid_type_error: "Constellation is required",
-	// }),
 });
-
-// const schema = z.object({
-// 	latitude: z
-// 		.number({ invalid_type_error: "Latitude is required" })
-// 		.min(-90, { message: "Latitude should be more than -90" })
-// 		.max(90, { message: "Latitude should be less than 90" }),
-// 	longitude: z
-// 		.number({ invalid_type_error: "Longitude is required" })
-// 		.min(-180, { message: "Longitude should be more than -180" })
-// 		.max(180, { message: "Longitude should be less than 180" }),
-// 	date: z.string({ invalid_type_error: "Date is required" }),
-// 	style: z.string({ invalid_type_error: "Style is required" }),
-// 	// type: z.string({ invalid_type_error: "Type is required" }),
-// 	constellation: z.string({
-// 		invalid_type_error: "Constellation is required",
-// 	}),
-// });
 
 type FormData = z.infer<typeof schema>;
 
@@ -82,7 +54,7 @@ interface Props {
 	submitForm: (data: FormData) => void;
 }
 
-const StarChartForm = ({ submitForm }: Props) => {
+const MoonPhaseForm = ({ submitForm }: Props) => {
 	const {
 		register,
 		handleSubmit,
@@ -95,13 +67,13 @@ const StarChartForm = ({ submitForm }: Props) => {
 		resolver: zodResolver(schema),
 	});
 
-	// set default date, style and constellation values
+	// set default date, view type, moon style and background style values
 	// else the default values are undefined
 	useEffect(() => {
 		setValue("observer.date", moment().format("YYYY-MM-DD"));
-		setValue("style", "default");
-		setValue("view.parameters.constellation", "and");
-		// setValue("view.type", "constellation");
+		setValue("view.type", "portrait-simple");
+		setValue("style.moonStyle", "default");
+		setValue("style.backgroundStyle", "solid");
 	}, []);
 
 	return (
@@ -121,7 +93,7 @@ const StarChartForm = ({ submitForm }: Props) => {
 						variant="subtitle1"
 						sx={{ ml: 1, mt: 1, mb: 3 }}
 					>
-						Star Chart Query Form:
+						Moon Chart Query Form:
 					</Typography>
 					<form
 						onSubmit={handleSubmit((data) => {
@@ -198,16 +170,23 @@ const StarChartForm = ({ submitForm }: Props) => {
 								/>
 							</Stack>
 							<Stack direction={"row"} spacing={1}>
-								<StarChartFormSelector_Style
-									onSelectStyle={(style) =>
-										setValue("style", style)
+								<MoonPhaseFormSelector_ViewType
+									onSelectViewType={(viewType) =>
+										setValue("view.type", viewType)
 									}
 								/>
-								<StarChartFormSelector_Constellation
-									onSelectConstellation={(constellation) =>
+								<MoonPhaseFormSelector_MoonStyle
+									onSelectMoonStyle={(moonStyle) =>
+										setValue("style.moonStyle", moonStyle)
+									}
+								/>
+								<MoonPhaseFormSelector_BackgroundStyle
+									onSelectBackgroundStyle={(
+										backgroundStyle
+									) =>
 										setValue(
-											"view.parameters.constellation",
-											constellation
+											"style.backgroundStyle",
+											backgroundStyle
 										)
 									}
 								/>
@@ -251,4 +230,4 @@ const StarChartForm = ({ submitForm }: Props) => {
 	);
 };
 
-export default StarChartForm;
+export default MoonPhaseForm;

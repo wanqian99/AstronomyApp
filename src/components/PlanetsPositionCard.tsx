@@ -147,7 +147,7 @@ const PlanetsPositionCard = ({ observerParams }: Props) => {
 														? "goldenrod"
 														: "khaki"
 												}
-												variant="h6"
+												variant="subtitle1"
 												fontWeight={400}
 												textTransform="uppercase"
 											>
@@ -174,7 +174,7 @@ const PlanetsPositionCard = ({ observerParams }: Props) => {
 														? "goldenrod"
 														: "khaki"
 												}
-												variant="h6"
+												variant="subtitle1"
 												fontWeight={400}
 												textTransform="uppercase"
 											>
