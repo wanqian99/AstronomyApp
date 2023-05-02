@@ -8,7 +8,9 @@ interface Props {
 const PlanetCard = ({ observerParams }: Props) => {
 	return (
 		<>
-			{observerParams.planet === "" ? (
+			{/* check observerParams object is not empty */}
+			{Object.keys(observerParams).length === 0 ||
+			observerParams.planet === "" ? (
 				<>
 					<Card
 						raised={true}
