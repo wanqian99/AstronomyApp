@@ -1,13 +1,11 @@
 import { Box, Divider, Grid, Stack, Typography } from "@mui/material";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { ObserverParams } from "../App";
 import moment from "moment";
 import PlanetsSelector from "./PlanetsSelector";
 import PlanetsForm from "./PlanetsForm";
 import PlanetsPositionCard from "./PlanetsPositionCard";
 import PlanetCard from "./PlanetCard";
-
-import { ColorModeContext } from "../theme";
 
 const Planets = () => {
 	const [observerParams, setObserverParams] = useState<ObserverParams>(
