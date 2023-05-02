@@ -1,9 +1,7 @@
 import useData from "./useData";
 
 export interface Planets {
-	// data: {
 	bodies: string[];
-	// };
 }
 
 const usePlanets = () =>

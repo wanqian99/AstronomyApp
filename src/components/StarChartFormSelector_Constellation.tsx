@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import useStarChart from "../hooks/useStarChart";
+import { useState } from "react";
 import {
 	SelectChangeEvent,
 	FormControl,

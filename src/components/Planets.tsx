@@ -7,12 +7,9 @@ import PlanetsForm from "./PlanetsForm";
 import PlanetsPositionCard from "./PlanetsPositionCard";
 import PlanetCard from "./PlanetCard";
 
-import lightBackgroundImage from "../assets/planets/abstract-luxury-gradient-blue-background-smooth-dark-blue-with-black-vignette-studio-banner-copy.jpg";
-import darkBackgroundImage from "../assets/planets/beautiful-shining-stars-night-sky.jpg";
 import { ColorModeContext } from "../theme";
 
 const Planets = () => {
-	const { mode } = useContext(ColorModeContext);
 	const [observerParams, setObserverParams] = useState<ObserverParams>(
 		{} as ObserverParams
 	);

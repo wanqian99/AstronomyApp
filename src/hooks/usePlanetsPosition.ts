@@ -68,14 +68,6 @@ const usePlanetsPosition = (observerParams: ObserverParams) =>
     useData<PlanetsPositionTable>(
         '/bodies/positions/' + observerParams.planet,
         {params: {
-            // latitude: "33.775867",
-            // longitude: "-84.39733",
-            // from_date: "2017-12-20",
-            // to_date: "2023-04-09",
-            // to_date: "2017-12-21",
-            // elevation: 1,
-            // time: "12:00:00",
-
             latitude: observerParams.latitude,
             longitude: observerParams.longitude,
             from_date: observerParams.from_date,

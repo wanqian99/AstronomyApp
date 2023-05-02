@@ -1,9 +1,8 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { ColorModeContext } from "../theme";
 import { Box, IconButton, Typography } from "@mui/material";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
-import { purple } from "@mui/material/colors";
 
 const LightDarkToggleButton = () => {
 	const { mode, toggleColorMode } = useContext(ColorModeContext);

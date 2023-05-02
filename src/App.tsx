@@ -44,10 +44,6 @@ function App() {
 					<Route path="Star Chart" element={<StarChart />} />
 					<Route path="Moon Phase" element={<MoonPhase />} />
 				</Routes>
-
-				{/* <button onClick={() => setObserverParams({ ...ObserverParams, body: "" })}>
-				Default
-			</button> */}
 			</div>
 		</>
 	);

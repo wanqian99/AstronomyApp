@@ -2,42 +2,6 @@ import { grey, indigo } from "@mui/material/colors";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { ReactNode, createContext, useMemo, useState } from "react";
 
-// const theme = createTheme({
-// 	// status: {
-// 	//     danger: '#e53e3e',
-// 	//   },
-// 	palette: {
-// 		primary: {
-// 			// Purple and green play nicely together.
-// 			main: purple[500],
-// 		},
-// 		secondary: {
-// 			// This is green.A700 as hex.
-// 			main: "#11cb5f",
-// 		},
-// 	},
-// });
-
-// const theme = createTheme({
-// 	palette: {
-// 		mode: "dark",
-// 		primary: {
-// 			light: "#757ce8",
-// 			main: "#3f50b5",
-// 			dark: "#002884",
-// 			contrastText: "#fff",
-// 		},
-// 		secondary: {
-// 			light: "#ff7961",
-// 			main: "#f44336",
-// 			dark: "#ba000d",
-// 			contrastText: "#000",
-// 		},
-// 	},
-// });
-
-// export default theme;
-
 interface Props {
 	children: ReactNode;
 }
@@ -69,107 +33,17 @@ const ColorModeContextProvider = ({ children }: Props) => {
 	const theme = useMemo(
 		() =>
 			createTheme({
-				components: {
-					// Name of the component
-					// MuiButtonBase: {
-					// 	defaultProps: {
-					// 		// The props to change the default for.
-					// 		disableRipple: true, // No more ripple, on the whole application 💣!
-					// 	},
-					// },
-					// MuiFormLabel: {
-					// 	defaultProps: {
-					// 		// root:
-					// 	},
-					// },
-				},
 				palette: {
 					mode,
-					// primary: {
-					// 	main: purple[900],
-					// 	// main: purple[50],
-					// 	light: pink[500],
-					// 	// main: "#3f50b5",
-					// 	dark: blue[500],
-					// 	// contrastText: "#fff",
-					// },
-					// secondary: {
-					// 	main: blue[900],
-					// 	// main: blue[50],
-					// 	// light: "#ff7961",
-					// 	// main: "#f44336",
-					// 	// dark: "#ba000d",
-					// 	// contrastText: "#000",
-					// },
-					// background: {
-					// 	default: grey[900],
-					// 	// paper: pink[50],
-					// },
-					// ...(mode === "light"
-					// 	? {
-					// 			////// palette values for light mode
-					// 			// nav
-					// 			primary: {
-					// 				// main: purple[900],
-					// 				main: purple[300],
-					// 			},
-					// 			// toggle mode icon
-					// 			secondary: {
-					// 				// main: purple[300],
-					// 				main: purple[900],
-					// 			},
-					// 			// divider
-					// 			divider: purple[900],
-					// 			//content, form button text
-					// 			background: {
-					// 				// default: "#fff",
-					// 				default: grey[100],
-					// 				// paper: deepOrange[900],
-					// 			},
-					// 			text: {
-					// 				// drawer text
-					// 				primary: "#000",
-					// 				// position card text
-					// 				secondary: "#000",
-					// 			},
-					// 	  }
-					// 	: {
-					// 			////// palette values for dark mode
-					// 			//nav
-					// 			primary: {
-					// 				// main: purple[300],
-					// 				main: "#000",
-					// 			},
-					// 			// toggle mode icon
-					// 			secondary: {
-					// 				main: purple[300],
-					// 			},
-					// 			// divider
-					// 			divider: purple[300],
-					// 			//content, form button text
-					// 			background: {
-					// 				default: grey[900],
-					// 				// paper: deepOrange[900],
-					// 			},
-					// 			text: {
-					// 				// drawer text
-					// 				primary: purple[300],
-					// 				// position card text
-					// 				secondary: grey[400],
-					// 			},
-					// 	  }),
-
 					...(mode === "light"
 						? {
 								////// palette values for light mode
 								// nav
 								primary: {
-									// main: purple[900],
 									main: indigo[900],
 								},
 								// home - explore text
 								secondary: {
-									// main: purple[300],
 									main: indigo[900],
 								},
 								// divider, drawer moonstar icon,
@@ -179,9 +53,7 @@ const ColorModeContextProvider = ({ children }: Props) => {
 								divider: indigo[900],
 								//content, form button text
 								background: {
-									// default: "#fff",
 									default: grey[100],
-									// paper: deepOrange[900],
 								},
 								text: {
 									// drawer text
@@ -194,7 +66,6 @@ const ColorModeContextProvider = ({ children }: Props) => {
 								////// palette values for dark mode
 								//nav
 								primary: {
-									// main: purple[300],
 									main: "#000",
 								},
 								// home - explore text
@@ -209,11 +80,9 @@ const ColorModeContextProvider = ({ children }: Props) => {
 								//content, form button text
 								background: {
 									default: grey[900],
-									// paper: deepOrange[900],
 								},
 								text: {
 									// drawer text
-									// primary: indigo[300],
 									primary: "#fff",
 									// position card text
 									secondary: grey[400],
@@ -221,12 +90,7 @@ const ColorModeContextProvider = ({ children }: Props) => {
 						  }),
 				},
 				typography: {
-					// h1: {
-					// 	fontFamily: "monospace",
-					// 	color: purple[300],
-					// },
 					fontFamily: "monospace",
-					// fontFamily: "Roboto",
 				},
 			}),
 		[mode]

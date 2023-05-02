@@ -1,13 +1,4 @@
-import {
-	Box,
-	Card,
-	CardContent,
-	Divider,
-	Grid,
-	ImageListItem,
-	Stack,
-	Typography,
-} from "@mui/material";
+import { Card, CardContent, ImageListItem, Typography } from "@mui/material";
 import { ObserverParams } from "../App";
 
 interface Props {

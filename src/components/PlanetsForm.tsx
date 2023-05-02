@@ -78,9 +78,7 @@ const PlanetsForm = ({ submitForm }: Props) => {
 	};
 
 	const formatTime = (data: FormData) => {
-		// console.log(data.time);
 		data.time = moment(data.time).format("HH:mm:ss");
-		// console.log(data.time);
 	};
 
 	return (

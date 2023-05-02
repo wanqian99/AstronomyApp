@@ -1,13 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { MoonPhaseParams } from "../hooks/useMoonPhase";
 import { Grid, Box } from "@mui/material";
 import moment from "moment";
 import { ColorModeContext } from "../theme";
 import MoonPhaseCard from "./MoonPhaseCard";
 import MoonPhaseForm from "./MoonPhaseForm";
-
-import lightBackgroundImage from "../assets/planets/abstract-luxury-gradient-blue-background-smooth-dark-blue-with-black-vignette-studio-banner-copy.jpg";
-import darkBackgroundImage from "../assets/planets/beautiful-shining-stars-night-sky.jpg";
 
 const MoonPhase = () => {
 	const { mode } = useContext(ColorModeContext);
