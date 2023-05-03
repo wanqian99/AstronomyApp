@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -13,11 +13,10 @@ import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
 
 import NightsStayRoundedIcon from "@mui/icons-material/NightsStayRounded";
 import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import LightDarkToggleButton from "./LightDarkToggleButton";
 
 import { ColorModeContext } from "../theme";
@@ -31,25 +30,27 @@ interface Props {
 }
 
 const drawerWidth = 240;
-const navItems = ["Planets", "Star Chart", "Moon Phase"];
+const navItems = {
+	planets: "Planets",
+	starChart: "Star Chart",
+	moonPhase: "Moon Phase",
+};
 
 const NavBar = (props: Props) => {
+	const location = useLocation();
+
 	const { mode } = useContext(ColorModeContext);
 
 	const { window } = props;
 	const [mobileOpen, setMobileOpen] = useState(false);
 
+	useEffect(() => {
+		// console.log(location);
+		// console.log(location.pathname == navItems[1]);
+	}, [location.pathname]);
+
 	const handleDrawerToggle = () => {
 		setMobileOpen((prevState) => !prevState);
-	};
-
-	const [selectedIndex, setSelectedIndex] = useState(0);
-
-	const handleListItemClick = (
-		// event: React.MouseEvent<HTMLDivElement, MouseEvent>,
-		index: number
-	) => {
-		setSelectedIndex(index);
 	};
 
 	const drawer = (
@@ -74,8 +75,7 @@ const NavBar = (props: Props) => {
 					<ListItem disablePadding>
 						<ListItemButton
 							sx={{ textAlign: "center" }}
-							selected={selectedIndex === 0}
-							onClick={() => handleListItemClick(0)}
+							selected={location.pathname === "/" ? true : false}
 						>
 							<ListItemText
 								primary={"Home"}
@@ -86,10 +86,10 @@ const NavBar = (props: Props) => {
 						</ListItemButton>
 					</ListItem>
 				</NavLink>
-				{navItems.map((item, index) => (
+				{Object.entries(navItems).map(([key, value]) => (
 					<NavLink
-						key={item}
-						to={`${item}`}
+						key={key}
+						to={`${key}`}
 						style={{
 							textDecoration: "none",
 						}}
@@ -99,11 +99,14 @@ const NavBar = (props: Props) => {
 								sx={{
 									textAlign: "center",
 								}}
-								selected={selectedIndex === index + 1}
-								onClick={() => handleListItemClick(index + 1)}
+								selected={
+									location.pathname === `/${key}`
+										? true
+										: false
+								}
 							>
 								<ListItemText
-									primary={item}
+									primary={value}
 									sx={{ color: "text.primary" }}
 								/>
 							</ListItemButton>
@@ -151,26 +154,41 @@ const NavBar = (props: Props) => {
 								};
 							}}
 						>
-							<NightsStayRoundedIcon
-								fontSize="large"
-								sx={{ fontSize: "45px", marginTop: "5px" }}
-							/>
-							<AutoAwesomeIcon
-								fontSize="small"
-								sx={{
-									marginLeft: "-20px",
-									marginBottom: "16px",
-									marginTop: "5px",
-								}}
-							/>
+							<ListItem disablePadding>
+								<ListItemButton
+									sx={{
+										textAlign: "left",
+										display: "inline-block",
+									}}
+									selected={
+										location.pathname === "/" ? true : false
+									}
+								>
+									<NightsStayRoundedIcon
+										fontSize="large"
+										sx={{
+											fontSize: "45px",
+											marginTop: "5px",
+										}}
+									/>
+									<AutoAwesomeIcon
+										fontSize="small"
+										sx={{
+											marginLeft: "-20px",
+											marginBottom: "16px",
+											marginTop: "5px",
+										}}
+									/>
+								</ListItemButton>
+							</ListItem>
 						</NavLink>
 					</Typography>
 
 					<Box sx={{ display: { xs: "none", sm: "block" } }}>
-						{navItems.map((item) => (
+						{Object.entries(navItems).map(([key, value]) => (
 							<NavLink
-								to={`${item}`}
-								key={item}
+								to={`${key}`}
+								key={key}
 								style={({ isActive }) => {
 									return {
 										display: "inline-block",
@@ -185,11 +203,27 @@ const NavBar = (props: Props) => {
 											? mode == "light"
 												? "white"
 												: "#7986cb"
-											: "pink",
+											: "none",
 									};
 								}}
 							>
-								<Button sx={{ color: "white" }}>{item}</Button>
+								<ListItem disablePadding>
+									<ListItemButton
+										sx={{
+											textAlign: "center",
+										}}
+										selected={
+											location.pathname === `/${key}`
+												? true
+												: false
+										}
+									>
+										<ListItemText
+											primary={value}
+											sx={{ color: "white" }}
+										/>
+									</ListItemButton>
+								</ListItem>
 							</NavLink>
 						))}
 					</Box>

@@ -40,9 +40,9 @@ function App() {
 				<NavBar />
 				<Routes>
 					<Route path="/" element={<Home />} />
-					<Route path="Planets" element={<Planets />} />
-					<Route path="Star Chart" element={<StarChart />} />
-					<Route path="Moon Phase" element={<MoonPhase />} />
+					<Route path="planets" element={<Planets />} />
+					<Route path="starChart" element={<StarChart />} />
+					<Route path="moonPhase" element={<MoonPhase />} />
 				</Routes>
 			</div>
 		</>
