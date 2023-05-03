@@ -9,6 +9,7 @@ const Intro = () => {
 					marginLeft: "0",
 					marginRight: "auto",
 					marginBottom: "10%",
+					marginTop: "10%",
 				}}
 			>
 				<Typography

@@ -13,15 +13,15 @@ const Home = () => {
 					margin: "0 auto",
 					paddingY: "3%",
 					alignContent: "center",
-					alignItems: "center",
+					// alignItems: "center",
 				}}
 			>
 				{/* Intro Text */}
-				<Grid item xs={11} md={4}>
+				<Grid item xs={11} md={6}>
 					<Intro />
 				</Grid>
 				{/* Astronomy Picture of the Day */}
-				<Grid item xs={11} md={8}>
+				<Grid item xs={11} md={6}>
 					<Apod />
 				</Grid>
 			</Grid>
