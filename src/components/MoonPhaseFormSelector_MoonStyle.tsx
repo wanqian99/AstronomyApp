@@ -39,7 +39,7 @@ const MoonPhaseFormSelector_MoonStyle = ({ onSelectMoonStyle }: Props) => {
 					<MenuItem value={"default"} key={"default"}>
 						Default
 					</MenuItem>
-					<MenuItem value={"sketched"} key={"sketched"}>
+					<MenuItem value={"sketch"} key={"sketch"}>
 						Sketched
 					</MenuItem>
 					<MenuItem value={"shaded"} key={"shaded"}>

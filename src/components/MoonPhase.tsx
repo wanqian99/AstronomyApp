@@ -21,8 +21,8 @@ const MoonPhase = () => {
 				moonStyle: "sketch",
 				backgroundStyle: mode === "dark" ? "stars" : "solid",
 				backgroundColor: mode === "dark" ? "#212121" : "#f5f5f5",
-				headingColor: mode === "dark" ? "white" : "black",
-				textColor: mode === "dark" ? "white" : "black",
+				headingColor: mode === "dark" ? "#c3b091" : "#DAA520",
+				textColor: mode === "dark" ? "white" : "#1a237e",
 			},
 			observer: {
 				latitude: 6.56774,
@@ -68,9 +68,17 @@ const MoonPhase = () => {
 												? "#212121"
 												: "#f5f5f5",
 										headingColor:
-											mode === "dark" ? "white" : "black",
+											newQuery.style.backgroundStyle ===
+											"stars"
+												? "#c3b091"
+												: "#DAA520",
 										textColor:
-											mode === "dark" ? "white" : "black",
+											newQuery.style.backgroundStyle ===
+											"stars"
+												? "white"
+												: mode === "dark"
+												? "#7986cb"
+												: "#1a237e",
 									},
 									observer: {
 										latitude: newQuery.observer.latitude,
