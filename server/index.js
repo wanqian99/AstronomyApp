@@ -34,7 +34,7 @@ const axiosInstance = axios.create({
 
 const { createProxyMiddleware } = require('http-proxy-middleware');
 app.use('/api', createProxyMiddleware({ 
-    target: 'https://astronomy-app-api.vercel.app', //original url
+    target: 'http://localhost:3000', //original url
     changeOrigin: true, 
     //secure: false,
     onProxyRes: function (proxyRes, req, res) {
