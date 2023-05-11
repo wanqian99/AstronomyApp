@@ -1,4 +1,4 @@
-import  { CanceledError } from "axios";
+import  axios, { CanceledError } from "axios";
 import { useState, useEffect } from "react";
 import ApiClient from "../services/ApiClient";
 
@@ -41,8 +41,9 @@ const useMoonPhase = (moonPhaseParams: MoonPhaseParams) => {
 		const controller = new AbortController();
         setLoading(true);
 
-		ApiClient
-			.post("/studio/moon-phase", moonPhaseParams, { signal: controller.signal })
+		// ApiClient
+        axios
+			.post("/api/studio/moon-phase", moonPhaseParams, { signal: controller.signal })
 			.then((res) => {
 				setData(res.data.data);
 				setLoading(false);

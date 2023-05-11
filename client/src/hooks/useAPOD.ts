@@ -19,11 +19,13 @@ const useAPOD = () => {
 		const controller = new AbortController();
 		axios
 			.get(
-				"https://api.nasa.gov/planetary/apod?api_key=dbOSX0vcEIjTHSeQhgvm3y6WOZDHDHCBQJG2toMo",
+				// "https://api.nasa.gov/planetary/apod?api_key=dbOSX0vcEIjTHSeQhgvm3y6WOZDHDHCBQJG2toMo",
+                "/api/apod",
 				{ signal: controller.signal }
 			)
 			.then((res) => {
 				setData(res.data);
+                console.log(res.data)
 				setLoading(false);
 			})
 			.catch((err) => {
