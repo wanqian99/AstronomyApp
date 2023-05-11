@@ -1,24 +1,8 @@
 {
     "rewrites": [
       {
-        "source": "/api",
-        "destination": "https://astronomy-app-api.vercel.app"
-      },
-      {
-        "source": "/api/:path*",
-        "destination": "https://astronomy-app-api.vercel.app/:path*"
-      },
-      {
-        "source": "/api/:path*/",
-        "destination": "https://astronomy-app-api.vercel.app/:path*/"
-      },
-      {
-        "source": "/api/:path*",
-        "destination": "https://astronomy-app-api.vercel.app/api/:path*"
-      },
-      {
-        "source": "/api/:path*/",
-        "destination": "https://astronomy-app-api.vercel.app/api/:path*/"
+        "source": "/api/:path(.*)",
+        "destination": "https://astronomy-app-api.vercel.app/api:path(.*)"
       }
     ]
 }
