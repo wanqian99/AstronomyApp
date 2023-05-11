@@ -42,7 +42,7 @@ const useStarChart = (starChartParams: StarChartParams) => {
 
 		// fetch from backend
         axios
-			.post("https://astronomy-app-api.vercel.app/api/studio/star-chart", starChartParams, { signal: controller.signal })
+			.post("/api/studio/star-chart", starChartParams, { signal: controller.signal })
 			.then((res) => {
 				setData(res.data.data);
 				setLoading(false);

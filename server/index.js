@@ -2,14 +2,19 @@
 const express = require('express');
 const axios = require('axios');
 var bodyParser = require('body-parser');
+var cors = require('cors')
 
 // create application/json parser
 var bodyParser = bodyParser.json()
 
 // Create app
 const app = express();
+// use cors for access control allow origin
+app.use(cors());
 // Declare webport
 const port = 3000;
+
+
 
 // astronomyApi id and key
 const applicationId = "21b092ce-d30d-43d3-9b09-678eb9925ee9";
@@ -26,6 +31,16 @@ const axiosInstance = axios.create({
             "Basic " + authString,
     },
 })
+
+// const { createProxyMiddleware } = require('http-proxy-middleware');
+// app.use('/api', createProxyMiddleware({ 
+//     target: 'http://localhost:5173/', //original url
+//     changeOrigin: true, 
+//     //secure: false,
+//     onProxyRes: function (proxyRes, req, res) {
+//        proxyRes.headers['Access-Control-Allow-Origin'] = '*';
+//     }
+// }));
 
 // get picture of the day from astronomyAPI
 app.get("/api/apod", async(req, res) => {

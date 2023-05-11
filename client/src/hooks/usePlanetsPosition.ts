@@ -69,7 +69,7 @@ const usePlanetsPosition = (observerParams: ObserverParams) =>
     // fetch from backend
     useData<PlanetsPositionTable>(
         // fetch from backend
-        'https://astronomy-app-api.vercel.app/api/bodies/positions/',
+        '/api/bodies/positions/',
         {
             params: {
                 planet: observerParams.planet,
