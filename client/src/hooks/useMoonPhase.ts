@@ -42,7 +42,7 @@ const useMoonPhase = (moonPhaseParams: MoonPhaseParams) => {
 
         // fetch from backend
         axios
-			.post("/api/studio/moon-phase", moonPhaseParams, { signal: controller.signal })
+			.post("https://astronomy-app-api.vercel.app/api/studio/moon-phase", moonPhaseParams, { signal: controller.signal })
 			.then((res) => {
 				setData(res.data.data);
 				setLoading(false);

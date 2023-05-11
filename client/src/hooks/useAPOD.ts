@@ -20,7 +20,7 @@ const useAPOD = () => {
 
         // fetch from backend
 		axios
-			.get("/api/apod", { signal: controller.signal })
+			.get("https://astronomy-app-api.vercel.app/api/apod", { signal: controller.signal })
 			.then((res) => {
 				setData(res.data);
                 console.log(res.data)
