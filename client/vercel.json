@@ -9,4 +9,4 @@
         "destination": "https://astronomy-app-api.vercel.app/:path*/"
       }
     ]
-  }
+}
