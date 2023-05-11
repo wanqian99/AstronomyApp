@@ -2,7 +2,7 @@
     "rewrites": [
       {
         "source": "/api/apod",
-        "destination": "https://astronomy-app-api.vercel.app/api.apod"
+        "destination": "https://astronomy-app-api.vercel.app/api/apod"
       }
     ]
 }
