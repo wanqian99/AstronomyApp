@@ -1,6 +1,5 @@
 import  axios, { CanceledError } from "axios";
 import { useState, useEffect } from "react";
-import ApiClient from "../services/ApiClient";
 
 interface moonPhaseStyle {
     moonStyle: string
@@ -41,7 +40,7 @@ const useMoonPhase = (moonPhaseParams: MoonPhaseParams) => {
 		const controller = new AbortController();
         setLoading(true);
 
-		// ApiClient
+        // fetch from backend
         axios
 			.post("/api/studio/moon-phase", moonPhaseParams, { signal: controller.signal })
 			.then((res) => {

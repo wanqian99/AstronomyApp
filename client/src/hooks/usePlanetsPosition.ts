@@ -65,8 +65,10 @@ interface PlanetsPositionTable {
 }
 const usePlanetsPosition = (observerParams: ObserverParams) =>
     // api path link, axios request config, dependencies
+
+    // fetch from backend
     useData<PlanetsPositionTable>(
-        // '/bodies/positions/' + observerParams.planet,
+        // fetch from backend
         '/api/bodies/positions/',
         {
             params: {

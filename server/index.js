@@ -1,7 +1,7 @@
 // Import libraries
 const express = require('express');
 const axios = require('axios');
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
 
 // create application/json parser
 var bodyParser = bodyParser.json()
@@ -27,12 +27,7 @@ const axiosInstance = axios.create({
     },
 })
 
-// app.get("/api", (req, res) => {
-//     const data = { "users": ["user1", "user2", "user3"] }
-//     res.json(data);
-//     // res.send("API is working properly")
-// });
-
+// get picture of the day from astronomyAPI
 app.get("/api/apod", async(req, res) => {
     try {
         const path = "https://api.nasa.gov/planetary/apod?api_key=dbOSX0vcEIjTHSeQhgvm3y6WOZDHDHCBQJG2toMo";
@@ -44,6 +39,7 @@ app.get("/api/apod", async(req, res) => {
     }
 });
 
+// get planet positions from astronomyAPI
 app.get("/api/bodies/positions/", bodyParser, async(req, res) => {
     try {
         const path = "/bodies/positions/";
@@ -71,6 +67,7 @@ app.get("/api/bodies/positions/", bodyParser, async(req, res) => {
     }
 });
 
+// get star chart from astronomyAPI
 app.post("/api/studio/star-chart", bodyParser, async(req, res) => {
     try {
         const path = "/studio/star-chart/";
@@ -84,6 +81,7 @@ app.post("/api/studio/star-chart", bodyParser, async(req, res) => {
     }
 });
 
+// get moon phase from astronomyAPI
 app.post("/api/studio/moon-phase", bodyParser, async(req, res) => {
     try {
         const path = "/studio/moon-phase/";

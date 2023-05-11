@@ -41,7 +41,7 @@ const useStarChart = (starChartParams: StarChartParams) => {
 		const controller = new AbortController();
         setLoading(true);
 
-		// ApiClient
+		// fetch from backend
         axios
 			.post("/api/studio/star-chart", starChartParams, { signal: controller.signal })
 			.then((res) => {

@@ -7,7 +7,7 @@ import NavBar from "./components/NavBar";
 
 import lightBackgroundImage from "./assets/planets/abstract-luxury-gradient-blue-background-smooth-dark-blue-with-black-vignette-studio-banner-copy.jpg";
 import darkBackgroundImage from "./assets/planets/beautiful-shining-stars-night-sky.jpg";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { ColorModeContext } from "./theme";
 
 export interface ObserverParams {
@@ -22,17 +22,6 @@ export interface ObserverParams {
 
 function App() {
 	const { mode } = useContext(ColorModeContext);
-
-	const [backendData, setBackendData] = useState<any>();
-
-	useEffect(() => {
-		// fetch("/api")
-		// 	.then((res) => res.json())
-		// 	.then((data) => setBackendData(data));
-		// fetch("/api/apod")
-		// 	.then((res) => res.json())
-		// 	.then((data) => console.log(data));
-	}, []);
 
 	return (
 		<>
@@ -49,13 +38,6 @@ function App() {
 				}}
 			>
 				<NavBar />
-				{/* {backendData === undefined ? (
-					<p>Loading...</p>
-				) : (
-					backendData.users.map((user: any, index: number) => (
-						<p key={index}>{user}</p>
-					))
-				)} */}
 				<Routes>
 					<Route path="/" element={<Home />} />
 					<Route path="planets" element={<Planets />} />
