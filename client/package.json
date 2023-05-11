@@ -1,5 +1,5 @@
 {
-  "name": "client",
+  "name": "astronomyapp",
   "private": true,
   "version": "0.0.0",
   "proxy": "https://astronomy-app-api.vercel.app",
