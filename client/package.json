@@ -2,7 +2,7 @@
   "name": "client",
   "private": true,
   "version": "0.0.0",
-  "proxy": "https://astronomy-app-eight.vercel.app",
+  "proxy": "https://astronomy-app-api.vercel.app",
   "type": "module",
   "scripts": {
     "dev": "vite",
