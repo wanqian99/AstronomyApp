@@ -66,15 +66,18 @@ interface PlanetsPositionTable {
 const usePlanetsPosition = (observerParams: ObserverParams) =>
     // api path link, axios request config, dependencies
     useData<PlanetsPositionTable>(
-        '/bodies/positions/' + observerParams.planet,
-        {params: {
-            latitude: observerParams.latitude,
-            longitude: observerParams.longitude,
-            from_date: observerParams.from_date,
-            to_date: observerParams.to_date,
-            elevation: observerParams.elevation,
-            time: observerParams.time,
-        }
+        // '/bodies/positions/' + observerParams.planet,
+        '/api/bodies/positions/',
+        {
+            params: {
+                planet: observerParams.planet,
+                latitude: observerParams.latitude,
+                longitude: observerParams.longitude,
+                from_date: observerParams.from_date,
+                to_date: observerParams.to_date,
+                elevation: observerParams.elevation,
+                time: observerParams.time,
+            }
         }, 
         [observerParams]);
 

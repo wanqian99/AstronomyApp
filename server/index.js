@@ -44,6 +44,33 @@ app.get("/api/apod", async(req, res) => {
     }
 });
 
+app.get("/api/bodies/positions/", bodyParser, async(req, res) => {
+    try {
+        const path = "/bodies/positions/";
+        const reqData = req.query;
+        // console.log(req._parsedUrl.search)
+        // console.log(req.query)
+
+        const response = await axiosInstance.get(
+            path + reqData.planet, 
+            {
+                params: {
+                    latitude: reqData.latitude,
+                    longitude: reqData.longitude,
+                    from_date: reqData.from_date,
+                    to_date: reqData.to_date,
+                    elevation: reqData.elevation,
+                    time: reqData.time,
+                }
+            }
+        )
+        res.json(response.data)
+        
+    } catch (err) {
+        res.status(400).send(err);
+    }
+});
+
 app.post("/api/studio/star-chart", bodyParser, async(req, res) => {
     try {
         const path = "/studio/star-chart/";
