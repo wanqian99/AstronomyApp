@@ -45,6 +45,7 @@ const axiosInstance = axios.create({
 // get picture of the day from astronomyAPI
 app.get("/api/apod", async(req, res) => {
     try {
+        console.log(req)
         const path = "https://api.nasa.gov/planetary/apod?api_key=dbOSX0vcEIjTHSeQhgvm3y6WOZDHDHCBQJG2toMo";
         const response = await axios.get(path)
         // console.log(response.data)
