@@ -1,6 +1,5 @@
 import axios, { CanceledError } from "axios";
 import { useState, useEffect } from "react"
-import ApiClient from "../services/ApiClient";
 
 interface observerParams_starChart {
     latitude: number,
