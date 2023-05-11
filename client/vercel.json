@@ -5,8 +5,12 @@
         "destination": "https://astronomy-app-api.vercel.app/api/apod"
       },
       {
+        "source": "/api/:path(.*)",
+        "destination": "https://astronomy-app-api.vercel.app/api/bodies/positions/:path"
+      },
+      {
         "source": "/api/bodies/positions/",
-        "destination": "https://astronomy-app-api.vercel.app/api/api/bodies/positions/:path*"
+        "destination": "https://astronomy-app-api.vercel.app/api/bodies/positions/:path*/"
       },
       {
         "source": "/api/studio/star-chart",
