@@ -15,6 +15,6 @@
       {
         "source": "/api/studio/moon-phase",
         "destination": "https://astronomy-app-api.vercel.app/api/studio/moon-phase"
-      },
+      }
     ]
 }
