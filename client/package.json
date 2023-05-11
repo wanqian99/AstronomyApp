@@ -2,7 +2,7 @@
   "name": "client",
   "private": true,
   "version": "0.0.0",
-  "proxy": "http://localhost:3000",
+  "proxy": "https://astronomy-app-api.vercel.app",
   "type": "module",
   "scripts": {
     "dev": "vite",
