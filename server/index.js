@@ -56,7 +56,7 @@ app.get("/api/apod", async(req, res) => {
 });
 
 // get planet positions from astronomyAPI
-app.get("/api/bodies/positions/", bodyParser, async(req, res) => {
+app.get("/api/bodies/positions", bodyParser, async(req, res) => {
     try {
         const path = "/bodies/positions/";
         const reqData = req.query;

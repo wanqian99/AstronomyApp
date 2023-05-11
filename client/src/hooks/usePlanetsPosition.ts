@@ -69,7 +69,7 @@ const usePlanetsPosition = (observerParams: ObserverParams) =>
     // fetch from backend
     useData<PlanetsPositionTable>(
         // fetch from backend
-        '/api/bodies/positions/',
+        '/api/bodies/positions',
         {
             params: {
                 planet: observerParams.planet,
