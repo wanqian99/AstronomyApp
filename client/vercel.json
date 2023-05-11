@@ -1,8 +1,8 @@
 {
     "rewrites": [
       {
-        "source": "/api/apod",
-        "destination": "https://astronomy-app-api.vercel.app/api/apod"
+        "source": "/(.*)",
+        "destination": "https://astronomy-app-api.vercel.app"
       }
     ]
 }
