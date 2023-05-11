@@ -32,15 +32,16 @@ const axiosInstance = axios.create({
     },
 })
 
-// const { createProxyMiddleware } = require('http-proxy-middleware');
-// app.use('/api', createProxyMiddleware({ 
-//     target: 'http://localhost:5173/', //original url
-//     changeOrigin: true, 
-//     //secure: false,
-//     onProxyRes: function (proxyRes, req, res) {
-//        proxyRes.headers['Access-Control-Allow-Origin'] = '*';
-//     }
-// }));
+const { createProxyMiddleware } = require('http-proxy-middleware');
+app.use('/api', createProxyMiddleware({ 
+    target: 'https://astronomy-app-api.vercel.app', //original url
+    changeOrigin: true, 
+    //secure: false,
+    onProxyRes: function (proxyRes, req, res) {
+       proxyRes.headers['Access-Control-Allow-Origin'] = '*';
+    }
+}));
+
 
 // get picture of the day from astronomyAPI
 app.get("/api/apod", async(req, res) => {
