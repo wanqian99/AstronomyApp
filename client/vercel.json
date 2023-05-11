@@ -1,5 +1,5 @@
 {
-    "routes": [{ "src": "/.*", "dest": "https://astronomy-app-api.vercel.app/" }],
+    "routes": [{ "src": "/(.*)", "dest": "/" }],
     "rewrites": [
         {
           "source": "/api/:path*",
