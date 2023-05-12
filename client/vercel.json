@@ -1,24 +1,8 @@
 {
     "rewrites": [
-      {
-        "source": "/api/apod",
-        "destination": "https://astronomy-app-api.vercel.app/api/apod"
-      },
-      {
-        "source": "/api/:path(.*)",
-        "destination": "https://astronomy-app-api.vercel.app/api/bodies/positions/:path"
-      },
-      {
-        "source": "/api/bodies/positions/",
-        "destination": "https://astronomy-app-api.vercel.app/api/bodies/positions/:path*/"
-      },
-      {
-        "source": "/api/studio/star-chart",
-        "destination": "https://astronomy-app-api.vercel.app/api/studio/star-chart"
-      },
-      {
-        "source": "/api/studio/moon-phase",
-        "destination": "https://astronomy-app-api.vercel.app/api/studio/moon-phase"
-      }
+        { 
+            "source": "/api/:path(.*)", 
+            "destination": "https://astronomy-app-api.vercel.app/api/:path*/" 
+        }
     ]
 }
