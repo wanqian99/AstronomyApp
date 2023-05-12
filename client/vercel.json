@@ -1,7 +1,7 @@
 {
     "rewrites": [
         { 
-            "source": "https://astronomy-app-eight.vercel.app/api/:path(.*)", 
+            "source": "/api/:path(.*)", 
             "destination": "https://astronomy-app-api.vercel.app/api/:path*/" 
         }
     ]
